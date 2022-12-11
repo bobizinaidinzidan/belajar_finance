@@ -1,0 +1,115 @@
+{% extends 'back/base.html' %}
+{% load static %}
+{% block content %}
+<div class="content">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card card-user">
+        <div class="image">
+          <img src="{% static 'back/img/bg/damir-bosnjak.jpg' %}" alt="...">
+        </div>
+        <div class="card-body">
+          <div class="author">
+            <a href="#">
+              <img class="avatar border-gray" src="{% static 'back/img/image.jpg' %}" alt="...">
+              <h5 class="title">Bobi Zinaidin Zidan</h5>
+            </a>
+            <p class="description">
+              {{user}}
+            </p>
+          </div>
+          <p class="description text-center">
+            "I like the way you work it <br>
+            No diggity <br>
+            I wanna bag it up"
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Profile Admin</h5>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="row">
+              <div class="col-md-5 pr-1">
+                <div class="form-group">
+                  <label>Company (disabled)</label>
+                  <input type="text" class="form-control" disabled="" placeholder="Company"
+                    value="Univaersitas Muhammadiyah Kalimantan Timur">
+                </div>
+              </div>
+              <div class="col-md-3 px-1">
+                <div class="form-group">
+                  <label>Username</label>
+                  <p type="text" class="form-control">{{user}}</p>
+                </div>
+              </div>
+              <div class="col-md-4 pl-1">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" class="form-control" disabled="" placeholder="Email"
+                    value="2011102441155@umkt.ac.id">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 pr-1">
+                <div class="form-group">
+                  <label>First Name</label>
+                  <p type="text" class="form-control">Bobi Zinaidin</p>
+                </div>
+              </div>
+              <div class="col-md-6 pl-1">
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <p type="text" class="form-control">Zidan</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Address</label>
+                  <p East type="text" class="form-control">East Borneo, Indonesia</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>City</label>
+                  <p type="text" class="form-control">Samarinda</p>
+                </div>
+              </div>
+              <div class="col-md-4 px-1">
+                <div class="form-group">
+                  <label>Country</label>
+                  <p type="text" class="form-control">Indonesia</p>
+                </div>
+              </div>
+              <div class="col-md-4 pl-1">
+                <div class="form-group">
+                  <label>Postal Code</label>
+                  <p type="number" class="form-control"> ZIP Code</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>About Me</label>
+                  <p rows="4" cols="80" class="form-control textarea">Oh so, your weak rhyme You doubt I'll bother,
+                    reading into it</p>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

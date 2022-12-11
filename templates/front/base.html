@@ -1,0 +1,337 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'front/img/apple-icon.png' %}">
+  <link rel="icon" type="image/png" href="{% static 'front/img/favicon.png">
+  <title>
+    FT• Finance-Tech
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <!-- Nucleo Icons -->
+  <link href="{% static 'front/css/nucleo-icons.css' %}" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link href="{% static 'front/css/blk-design-system-pro.css' %}?v=1.0.0" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="{% static 'front/demo/demo.css' %}" rel="stylesheet" />
+</head>
+
+<body class="index-page">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg  fixed-top navbar-transparent " color-on-scroll="300">
+    <div class="container">
+      <div class="navbar-translate">
+        <a class="navbar-brand" href="{% url 'index' %}" rel="tooltip" title="Financial Technology"
+          data-placement="bottom">
+          <span>FT•</span> Finance-Tech
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+          aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-bar bar1"></span>
+          <span class="navbar-toggler-bar bar2"></span>
+          <span class="navbar-toggler-bar bar3"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navigation">
+        <div class="navbar-collapse-header">
+          <div class="row">
+            <div class="col-6 collapse-brand">
+              <a>
+                FT•
+                <span>Finance-Tech</span>
+              </a>
+            </div>
+            <div class="col-6 collapse-close text-right">
+              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navigation"
+                aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="tim-icons icon-simple-remove"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <ul class="navbar-nav ml-auto">
+          <li class="dropdown nav-item">
+            <a href="{% url 'index' %}" class="nav-link">
+              Home
+            </a>
+          </li>
+          <li class="dropdown nav-item">
+            <a href="{% url 'reksadana' %}" class="nav-link">
+              Reksadana
+            </a>
+          </li>
+          <li class="dropdown nav-item">
+            <a href="{% url 'berita' %}" class="nav-link">
+              Berita
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="#">
+              Watchlist
+            </a>
+          </li>
+          <!--<li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">
+              <p>Isi Content</p>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="{% url 'berita' %}">
+                <i class="tim-icons icon-app"></i> Berita
+              </a>
+              <a class="dropdown-item" href="{% url 'postingan' %}">
+                <i class="tim-icons icon-paper" aria-hidden="true"></i>
+                Postingan
+              </a>
+              <a class="dropdown-item" href="#">
+                <i class="tim-icons icon-align-left-2"></i> Reksadana
+              </a>
+            </div>
+          </li>-->
+          <!-- target="_blank" -->
+
+          {% if request.user.is_anonymous %}
+          </li>
+          <li class="nav-item dropdown">
+            <a href="{% url 'contact' %}" class="nav-link">
+              About Me
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="{% url 'login' %}">
+              Login
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-sm btn-default" href="{% url 'register' %}">
+              <p>Registrasi</p>
+            </a>
+          </li>
+          {% elif request.session.is_operator == 'operator' %}
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="{% url 'account' %}">
+              Profile
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="{% url 'contact' %}" class="nav-link">
+              About Me
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-sm btn-default" href="{% url 'dashboard' %}">
+              <p>Dashboard</p>
+            </a>
+          </li>
+          {% elif request.session.is_operator == 'user' %}
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="{% url 'account' %}">
+              Profile
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="{% url 'contact' %}" class="nav-link">
+              About Me
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-sm btn-default" href="{% url 'logout' %}">
+              <p>Logout</p>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  {% block content %}
+
+  {% endblock content %}
+
+  <footer class="footer" data-background-color="black">
+    <div class="container">
+      <a class="footer-brand" href="javascript:;">FT• Finance-Tech</a>
+      <ul class="pull-center">
+        <li>
+          <div class="copyright pull-right">
+            Copyright ©
+            <script>
+              document.write(new Date().getFullYear())
+            </script> by bobizinaidin_
+          </div>
+        </li>
+      </ul>
+      <ul class="social-buttons pull-right">
+        <li>
+          <a target="_blank" href="https://twitter.com/bobizinaidin_" class="btn btn-icon btn-link btn-neutral"
+            data-original-title="Follow us">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="https://facebook.com/bobbizinaidin.zidan" class="btn btn-icon btn-link btn-neutral"
+            data-original-title="Like us">
+            <i class="fab fa-facebook-square"></i>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="https://www.instagram.com/bobizinaidin_" class="btn btn-icon btn-link btn-neutral"
+            data-original-title="Follow us">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="https://github.com/bobizinaidinzidan/" class="btn btn-icon btn-link btn-neutral"
+            data-original-title="Follow us">
+            <i class="fab fa-github"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  </div>
+  <!--   Core JS Files   -->
+  <script src="{% static 'front/js/core/jquery.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'front/js/core/popper.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'front/js/core/bootstrap.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'front/js/plugins/perfect-scrollbar.jquery.min.js' %}"></script>
+  <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+  <script src="{% static 'front/js/plugins/bootstrap-switch.js' %}"></script>
+  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+  <script src="{% static 'front/js/plugins/nouislider.min.js' %}" type="text/javascript"></script>
+  <!--  Plugin for the Carousel, full documentation here: http://kenwheeler.github.io/slick/ -->
+  <script src="{% static 'front/js/plugins/slick.js' %}" type="text/javascript"></script>
+  <!--  Plugin for the blob animation -->
+  <script src="{% static 'front/js/plugins/anime.min.js' %}" type="text/javascript"></script>
+  <!-- Chart JS -->
+  <script src="{% static 'front/js/plugins/chartjs.min.js' %}"></script>
+  <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
+  <script src="{% static 'front/js/plugins/moment.min.js' %}"></script>
+  <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+  <script src="{% static 'front/js/plugins/bootstrap-tagsinput.js' %}"></script>
+  <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+  <script src="{% static 'front/js/plugins/bootstrap-selectpicker.js' %}" type="text/javascript"></script>
+  <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+  <script src="{% static 'front/js/plugins/bootstrap-datetimepicker.js' %}" type="text/javascript"></script>
+  <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+  <script src="{% static 'front/js/plugins/jasny-bootstrap.min.js' %}"></script>
+  <!-- Black Dashboard DEMO methods, don't include it in your project! -->
+  <script src="{% static 'front/demo/demo.js"></script>
+  <!-- Control Center for Black UI Kit: parallax effects, scripts for the example pages etc -->
+  <!--  Google Maps Plugin    -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <script src="{% static 'front/js/blk-design-system-pro.min.js' %}?v=1.0.0" type="text/javascript"></script>
+  <script>
+    $(document).ready(function () {
+      blackKit.initDatePicker();
+      blackKit.initSliders();
+    });
+
+    function scrollToDownload() {
+
+      if ($('.section-download').length != 0) {
+        $("html, body").animate({
+          scrollTop: $('.section-download').offset().top
+        }, 1000);
+      }
+    }
+  </script>
+  <script>
+    $(document).ready(function () {
+      $('#datatable').DataTable({
+        "pagingType": "full_numbers",
+        "lengthMenu": [
+          [10, 25, 50, -1],
+          [10, 25, 50, "All"]
+        ],
+        responsive: true,
+        language: {
+          search: "_INPUT_",
+          searchPlaceholder: "Search records",
+        }
+
+      });
+
+      var table = $('#datatable').DataTable();
+
+      // Edit record
+      table.on('click', '.edit', function () {
+        $tr = $(this).closest('tr');
+
+        var data = table.row($tr).data();
+        alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
+      });
+
+      // Delete a record
+      table.on('click', '.remove', function (e) {
+        $tr = $(this).closest('tr');
+        table.row($tr).remove().draw();
+        e.preventDefault();
+      });
+
+      //Like record
+      table.on('click', '.like', function () {
+        alert('You clicked on Like button');
+      });
+    });
+  </script>
+  <script>
+    $(document).ready(function () {
+
+      $(".slider").slick({
+        dots: false,
+        infinite: true,
+        centerMode: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        responsive: [{
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            infinite: true,
+          }
+        },
+        {
+          breakpoint: 786,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+          // You can unslick at a given breakpoint now by adding:
+          // settings: "unslick"
+          // instead of a settings object
+        ]
+      });
+    });
+  </script>
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS &&
+      TrackJS.install({
+        token: "ee6fab19c5a04ac1a32a645abde4613a",
+        application: "black-dashboard-pro"
+      });
+  </script>
+</body>
+
+</html>
