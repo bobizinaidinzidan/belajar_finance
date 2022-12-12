@@ -9,7 +9,7 @@ class Type(models.Model):
         verbose_name_plural = "Type"
 
 
-class Reksadana(models.Model):
+class TReksadana(models.Model):
     name = models.CharField(max_length=200)
     management = models.CharField(max_length=200)
     custodian = models.CharField(max_length=200)

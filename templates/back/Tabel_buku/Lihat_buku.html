@@ -12,7 +12,7 @@
                     <form class="form-horizontal" method="POST">
                         {% csrf_token %}
                         <div class="row">
-                            <label class="col-md-3 col-form-label">Penulis</label>
+                            <label class="col-md-2 col-form-label">Penulis</label>
                             <div class="col-sm-10">
                                 <div class="form-group">
                                     <p class="form-control">{{ buku.penulis }}</p>
@@ -20,7 +20,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-md-3 col-form-label">Jenis Buku</label>
+                            <label class="col-md-2 col-form-label">Jenis Buku</label>
                             <div class="col-sm-10">
                                 <div class="form-group">
                                     <p class="form-control">{{ buku.jenis_buku }}</p>
@@ -28,7 +28,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-md-3 col-form-label">Judul</label>
+                            <label class="col-md-2 col-form-label">Judul</label>
                             <div class="col-sm-10">
                                 <div class="form-group">
                                     <p class="form-control">{{ buku.judul }}</p>
@@ -36,7 +36,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-md-3 col-form-label">Sinopsis</label>
+                            <label class="col-md-2 col-form-label">Sinopsis</label>
                             <div class="col-sm-10">
                                 <div class="form-group">
                                     <p class="form-control">{{ buku.sinopsis }}</p>
@@ -44,7 +44,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-md-3 col-form-label">Penerbit</label>
+                            <label class="col-md-2 col-form-label">Penerbit</label>
                             <div class="col-sm-10">
                                 <div class="form-group">
                                     <p class="form-control">{{ buku.penerbit }}</p>
@@ -52,7 +52,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-md-3 col-form-label">Tanggal Terbit</label>
+                            <label class="col-md-2 col-form-label">Tanggal Terbit</label>
                             <div class="col-sm-10">
                                 <div class="form-group">
                                     <p class="form-control">{{ buku.date }}</p>
@@ -60,7 +60,7 @@
                             </div>
                         </div>
                         <div class="card-footer ">
-                            <a href="{% url 'buku' %}" class="btn btn-primary">Kembali</a>
+                            <a href="{% url 'Tbuku' %}" class="btn btn-primary">Kembali</a>
                         </div>
                     </form>
                 </div>

@@ -11,9 +11,11 @@
                 </div>
                 <div class="card-body">
                     {% if request.session.is_operator == 'operator' %}
-                    <div class="toolbar">
-                        <a href="{% url 'singkron_data' %}" class="btn">Singkronisasi Data</a>
+                    <div>
+                        <a href="{% url 'singkron_data_reksadana' %}" class="btn">Singkronisasi Data Reksadana</a>
+                        <a href="{% url 'singkron_data_type' %}" class="btn">Singkronisasi Data Jenis Reksadana</a>
                     </div>
+
                     {% endif %}
                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>

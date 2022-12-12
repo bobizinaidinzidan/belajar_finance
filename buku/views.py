@@ -69,8 +69,6 @@ def TabelBuku(request):
 @login_required
 def InputBuku(request):
     template_name= 'back/Tabel_buku/Input_Buku.html'
-    list_penulis = Penulis.objects.all()
-    list_Jenis = Jenis.objects.all()
     if request.method == "POST":
         input_penulis = request.POST.get('penulis')
         input_jenis_buku = request.POST.get('jenis_buku')
@@ -78,13 +76,10 @@ def InputBuku(request):
         input_sinopsis = request.POST.get('sinopsis')
         input_penerbit = request.POST.get('penerbit')
         input_tanggal_terbit = request.POST.get('tanggal_terbit')
-        
-        get_penulis = Penulis.objects.get(nama=input_penulis)
-        get_jenis_buku = Jenis.objects.get(nama=input_jenis_buku)
 
         Buku.objects.create(
-            penulis = get_penulis,
-            jenis_buku = get_jenis_buku,
+            penulis = input_penulis,
+            jenis_buku = input_jenis_buku,
             judul = input_judul,
             sinopsis = input_sinopsis,
             penerbit = input_penerbit,
@@ -93,8 +88,6 @@ def InputBuku(request):
         return redirect(TabelBuku)
     context= {
         'title' : 'ini halaman Input Buku',
-        'penulis' : list_penulis,
-        'jenis' : list_Jenis
     }
     return render(request, template_name, context)
 
@@ -111,8 +104,6 @@ def LihatBuku(request, id):
 @login_required
 def EditBuku(request, id):
     template_name = 'back/Tabel_buku/Edit_buku.html'
-    list_penulis = Penulis.objects.all()
-    list_Jenis = Jenis.objects.all()
     get_buku = Buku.objects.get(id=id)
     
     if request.method == 'POST':
@@ -122,13 +113,10 @@ def EditBuku(request, id):
         input_sinopsis = request.POST.get('sinopsis')
         input_penerbit = request.POST.get('penerbit')
         input_tanggal_terbit = request.POST.get('tanggal_terbit')
-        
-        get_penulis = Penulis.objects.get(nama=input_penulis)
-        get_jenis_buku = Jenis.objects.get(nama=input_jenis_buku)
 
         # Bagian Mengedit Data
-        get_buku.penulis = get_penulis
-        get_buku.jenis_buku = get_jenis_buku
+        get_buku.penulis = input_penulis
+        get_buku.jenis_buku = input_jenis_buku
         get_buku.judul = input_judul
         get_buku.sinopsis = input_sinopsis
         get_buku.penerbit = input_penerbit
@@ -140,8 +128,6 @@ def EditBuku(request, id):
         return redirect(TabelBuku)
     context = {
         'title' : 'Ini Halaman Edit Data Buku',
-        'penulis' : list_penulis,
-        'jenis' : list_Jenis,
         'buku' : get_buku,
     }
     return render(request, template_name, context)

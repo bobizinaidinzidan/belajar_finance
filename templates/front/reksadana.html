@@ -31,25 +31,30 @@
             <!--<p class="category">Horizontal tabs</p>-->
             <ul class=" nav nav-center nav-pills nav-pills-primary" role="tablist">
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#link11" role="tablist">
-                  RDPT
+                <a class="nav-link active" data-toggle="tab" href="#link11" role="tablist">
+                  Reksadana Pendapatan Tetap
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#link12" role="tablist">
-                  RDPU
+                  Reksadana Pasar Uang
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#link13" role="tablist">
+                <a class="nav-link" data-toggle="tab" href="#link13" role="tablist">
                   Reksadana Campuran
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#link14" role="tablist">
+                  Reksadana Saham
                 </a>
               </li>
             </ul>
             <div class="tab-content tab-space">
-              <div class="tab-pane" id="link11">
+              <div class="tab-pane active" id="link11">
                 <div class="col-md-6 ml-auto mr-auto text-center">
-                  <h2 class="title mb-4">RDPT</h2>
+                  <h2 class="title mb-4">Reksadana Pendapatan Tetap</h2>
                   <div class="section-space"></div>
                 </div>
                 <div class="col-md-12 mx-auto">
@@ -59,104 +64,47 @@
                         <div class="table-responsive mb-0">
                           <table class="table table-pricing">
                             <thead>
-                              <tr>
+                              <tr class="bg-primary">
                                 <th class="text-center">
                                   #
                                 </th>
                                 <th class="text-center">
-                                  <p class="card-title">FindMe</p>
+                                  <b class="card-title">Nama</b>
                                 </th>
                                 <th class="text-center">
-                                  <p class="card-title">Essential</p>
+                                  <p class="card-title">Management</p>
                                 </th>
                                 <th class="text-center">
-                                  <p class="card-title">Premium</p>
+                                  <p class="card-title">Custodion</p>
                                 </th>
                                 <th class="text-center">
-                                  <p class="card-title">FindMe</p>
+                                  <p class="card-title">Type</p>
                                 </th>
+                                {% if request.session.is_operator == 'operator' %}
                                 <th class="text-center">
-                                  <p class="card-title">Essential</p>
+                                  <p class="card-title">Actions</p>
                                 </th>
-                                <th class="text-center">
-                                  <p class="card-title">Essential</p>
-                                </th>
-                                <th class="center">
-                                  <p class="card-title">Essential</p>
-                                </th>
+                                {% endif %}
                               </tr>
                             </thead>
                             <tbody>
+                              {% for index in reksadana %}
+                              {% if index.type == type2 %}
                               <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>{{ index.name }}</td>
+                                <td>{{ index.management }}</td>
+                                <td>{{ index.custodian }}</td>
+                                <td class="text-center">{{ index.type }}</td>
+                                {% if request.session.is_operator == 'operator' %}
+                                <td class="text-center">
+                                  <a href="{% url 'lihat_buku' index.id %}" class="btn btn-sm btn-info"><i
+                                      class="bi bi-eye"></i>Plus</a>
+                                </td>
+                                {% endif %}
                               </tr>
-                              <tr>
-                                <td>
-                                  4
-                                </td>
-                                <td>
-                                  Plan cost<i class="tim-icons icon-alert-circle-exc ml-1"></i>
-                                </td>
-                                <td>
-                                  Free
-                                </td>
-                                <td>
-                                  Free
-                                </td>
-                                <td>
-                                  <a href="javascript:void(0)">Contact us</a>
-                                </td>
-                                <td>
-                                  <a href="javascript:void(0)">Contact us</a>
-                                </td>
-                                <td>
-                                  Platform fee<i class="tim-icons icon-alert-circle-exc ml-1"></i>
-                                </td>
-                                <td>
-                                  0%
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  5
-                                </td>
-                                <td>
-                                  Plan cost<i class="tim-icons icon-alert-circle-exc ml-1"></i>
-                                </td>
-                                <td>
-                                  Free
-                                </td>
-                                <td>
-                                  Free
-                                </td>
-                                <td>
-                                  <a href="javascript:void(0)">Contact us</a>
-                                </td>
-                                <td>
-                                  <a href="javascript:void(0)">Contact us</a>
-                                </td>
-                                <td>
-                                  Platform fee<i class="tim-icons icon-alert-circle-exc ml-1"></i>
-                                </td>
-                                <td>
-                                  <a target="_blank" href="#" class="btn btn-icon btn-neutral btn-round btn-simple"
-                                    data-toggle="tooltip" data-original-title="Add Watchlist">
-                                    <i class="fa fa-plus"></i>
-                                  </a>
-                                </td>
-                              </tr>
-                              <tr>
-                                <th class="text-right">
-                                  #
-                                </th>
-                              </tr>
+                              {% endif %}
+                              {% endfor %}
                             </tbody>
                           </table>
                         </div>
@@ -167,7 +115,7 @@
               </div>
               <div class="tab-pane" id="link12">
                 <div class="col-md-6 ml-auto mr-auto text-center">
-                  <h2 class="title mb-4">RDPU</h2>
+                  <h2 class="title mb-4">Reksadana Pasar Uang</h2>
                   <div class="section-space"></div>
                 </div>
                 <div class="col-md-12 mx-auto">
@@ -177,103 +125,45 @@
                         <div class="table-responsive mb-0">
                           <table class="table table-pricing">
                             <thead>
-                              <tr>
+                              <tr class="bg-primary">
                                 <th class="text-center">
                                   #
                                 </th>
                                 <th class="text-center">
-                                  <p class="card-title">FindMe</p>
+                                  <b class="card-title">Nama</b>
                                 </th>
                                 <th class="text-center">
-                                  <p class="card-title">Essential</p>
+                                  <p class="card-title">Management</p>
                                 </th>
                                 <th class="text-center">
-                                  <p class="card-title">Premium</p>
+                                  <p class="card-title">Custodion</p>
                                 </th>
                                 <th class="text-center">
-                                  <p class="card-title">FindMe</p>
+                                  <p class="card-title">Type</p>
                                 </th>
                                 <th class="text-center">
-                                  <p class="card-title">Essential</p>
-                                </th>
-                                <th class="text-center">
-                                  <p class="card-title">Essential</p>
-                                </th>
-                                <th class="center">
-                                  <p class="card-title">Essential</p>
+                                  <p class="card-title">Actions</p>
                                 </th>
                               </tr>
                             </thead>
                             <tbody>
+                              {% for index in reksadana %}
+                              {% if index.type == type4 %}
                               <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>{{ index.name }}</td>
+                                <td>{{ index.management }}</td>
+                                <td>{{ index.custodian }}</td>
+                                <td class="text-center">{{ index.type }}</td>
+                                {% if request.session.is_operator == 'operator' %}
+                                <td class="text-center">
+                                  <a href="{% url 'lihat_buku' index.id %}" class="btn btn-sm btn-info"><i
+                                      class="bi bi-eye"></i>Plus</a>
+                                </td>
+                                {% endif %}
                               </tr>
-                              <tr>
-                                <td>
-                                  4
-                                </td>
-                                <td>
-                                  Plan cost<i class="tim-icons icon-alert-circle-exc ml-1"></i>
-                                </td>
-                                <td>
-                                  Free
-                                </td>
-                                <td>
-                                  Free
-                                </td>
-                                <td>
-                                  <a href="javascript:void(0)">Contact us</a>
-                                </td>
-                                <td>
-                                  <a href="javascript:void(0)">Contact us</a>
-                                </td>
-                                <td>
-                                  Platform fee<i class="tim-icons icon-alert-circle-exc ml-1"></i>
-                                </td>
-                                <td>
-                                  0%
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  5
-                                </td>
-                                <td>
-                                  Plan cost<i class="tim-icons icon-alert-circle-exc ml-1"></i>
-                                </td>
-                                <td>
-                                  Free
-                                </td>
-                                <td>
-                                  Free
-                                </td>
-                                <td>
-                                  <a href="javascript:void(0)">Contact us</a>
-                                </td>
-                                <td>
-                                  <a href="javascript:void(0)">Contact us</a>
-                                </td>
-                                <td>
-                                  Platform fee<i class="tim-icons icon-alert-circle-exc ml-1"></i>
-                                </td>
-                                <td>
-                                  0%
-                                </td>
-                              </tr>
-                              <tr>
-                                <th class="text-right">
-                                  <a href="{% url 'reksadana' %}">
-                                    Lihat Selengkapnya ...
-                                  </a>
-                                </th>
-                              </tr>
+                              {% endif %}
+                              {% endfor %}
                             </tbody>
                           </table>
                         </div>
@@ -282,7 +172,7 @@
                   </div>
                 </div>
               </div>
-              <div class="tab-pane active" id="link13">
+              <div class="tab-pane" id="link13">
                 <div class="col-md-6 ml-auto mr-auto text-center">
                   <h2 class="title mb-4">Reksadana Campuran</h2>
                   <div class="section-space"></div>
@@ -294,86 +184,104 @@
                         <div class="table-responsive mb-2">
                           <table class="table table-pricing">
                             <thead>
-                              <tr>
-                                <th class="text-center">#</th>
-                                <th class="text-center">Username</th>
-                                <th class="text-center">Email</th>
-                                <th class="text-center">Group</th>
-                                <th class="text-center">First Name</th>
-                                <th class="text-center">Last Name</th>
-                                <th class="text-center">Is Staff</th>
-                                <th class="text-center">Actions</th>
+                              <tr class="bg-primary">
+                                <th class="text-center">
+                                  #
+                                </th>
+                                <th class="text-center">
+                                  <b class="card-title">Nama</b>
+                                </th>
+                                <th class="text-center">
+                                  <p class="card-title">Management</p>
+                                </th>
+                                <th class="text-center">
+                                  <p class="card-title">Custodion</p>
+                                </th>
+                                <th class="text-center">
+                                  <p class="card-title">Type</p>
+                                </th>
+                                <th class="text-center">
+                                  <p class="card-title">Actions</p>
+                                </th>
                               </tr>
                             </thead>
                             <tbody>
+                              {% for index in reksadana %}
+                              {% if index.type == type1 %}
                               <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>{{ index.name }}</td>
+                                <td>{{ index.management }}</td>
+                                <td>{{ index.custodian }}</td>
+                                <td class="text-center">{{ index.type }}</td>
+                                {% if request.session.is_operator == 'operator' %}
+                                <td class="text-center">
+                                  <a href="{% url 'lihat_buku' index.id %}" class="btn btn-sm btn-info"><i
+                                      class="bi bi-eye"></i>Plus</a>
+                                </td>
+                                {% endif %}
                               </tr>
+                              {% endif %}
+                              {% endfor %}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane active" id="link14">
+                <div class="col-md-6 ml-auto mr-auto text-center">
+                  <h2 class="title mb-4">Reksadana Saham</h2>
+                  <div class="section-space"></div>
+                </div>
+                <div class="col-md-12 mx-auto">
+                  <div>
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="table-responsive mb-0">
+                          <table class="table table-pricing">
+                            <thead>
+                              <tr class="bg-primary">
+                                <th class="text-center">
+                                  #
+                                </th>
+                                <th class="text-center">
+                                  <b class="card-title">Nama</b>
+                                </th>
+                                <th class="text-center">
+                                  <p class="card-title">Management</p>
+                                </th>
+                                <th class="text-center">
+                                  <p class="card-title">Custodion</p>
+                                </th>
+                                <th class="text-center">
+                                  <p class="card-title">Type</p>
+                                </th>
+                                <th class="text-center">
+                                  <p class="card-title">Actions</p>
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for index in reksadana %}
+                              {% if index.type == type3 %}
                               <tr>
-                                <td>
-                                  4
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>{{ index.name }}</td>
+                                <td>{{ index.management }}</td>
+                                <td>{{ index.custodian }}</td>
+                                <td class="text-center">{{ index.type }}</td>
+                                {% if request.session.is_operator == 'operator' %}
+                                <td class="text-center">
+                                  <a href="{% url 'lihat_buku' index.id %}" class="btn btn-sm btn-info"><i
+                                      class="bi bi-eye"></i>Plus</a>
                                 </td>
-                                <td>
-                                  Plan cost<i class="tim-icons icon-alert-circle-exc ml-1"></i>
-                                </td>
-                                <td>
-                                  Free
-                                </td>
-                                <td>
-                                  Free
-                                </td>
-                                <td>
-                                  <a href="javascript:void(0)">Contact us</a>
-                                </td>
-                                <td>
-                                  <a href="javascript:void(0)">Contact us</a>
-                                </td>
-                                <td>
-                                  Platform fee<i class="tim-icons icon-alert-circle-exc ml-1"></i>
-                                </td>
-                                <td>
-                                  <a href="#" class="btn btn-icon btn-neutral btn-round btn-simple"
-                                    data-toggle="tooltip" data-original-title="Add Watchlist">
-                                    <i class="fa fa-plus"></i>
-                                  </a>
-                                </td>
+                                {% endif %}
                               </tr>
-                              <tr>
-                                <td>
-                                  5
-                                </td>
-                                <td>
-                                  Plan cost<i class="tim-icons icon-alert-circle-exc ml-1"></i>
-                                </td>
-                                <td>
-                                  Free
-                                </td>
-                                <td>
-                                  Free
-                                </td>
-                                <td>
-                                  <a href="javascript:void(0)">Contact us</a>
-                                </td>
-                                <td>
-                                  <a href="javascript:void(0)">Contact us</a>
-                                </td>
-                                <td>
-                                  Platform fee<i class="tim-icons icon-alert-circle-exc ml-1"></i>
-                                </td>
-                                <td>
-                                  <a target="_blank" href="#" class="btn btn-icon btn-neutral btn-round btn-simple"
-                                    data-toggle="tooltip" data-original-title="Add Watchlist">
-                                    <i class="fa fa-plus"></i>
-                                  </a>
-                                </td>
-                              </tr>
+                              {% endif %}
+                              {% endfor %}
                             </tbody>
                           </table>
                         </div>
@@ -408,7 +316,7 @@
                   <h5 class="mb-0">
                     <button class="btn btn-link w-100 text-left collapsed" type="button" data-toggle="collapse"
                       data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                      How do I order?
+                      Apa Itu Reksa Dana ?
                       <i class="tim-icons icon-minimal-down float-right"></i>
                     </button>
                   </h5>
@@ -433,7 +341,7 @@
                   <h5 class="mb-0">
                     <button class="btn btn-link w-100 text-left collapsed" type="button" data-toggle="collapse"
                       data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      How can i make the payment?
+                      Kenapa Investasi Reksa Dana ?
                       <i class="tim-icons icon-minimal-down float-right"></i>
                     </button>
                   </h5>
@@ -458,7 +366,7 @@
                   <h5 class="mb-0">
                     <button class="btn btn-link w-100 text-left collapsed" type="button" data-toggle="collapse"
                       data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      How much time does it take to receive the order?
+                      Apa Itu Reksa Dana Pendapatan Tetap ?
                       <i class="tim-icons icon-minimal-down float-right"></i>
                     </button>
                   </h5>
@@ -481,9 +389,9 @@
               <div class="card">
                 <div class="card-header" id="headingFour">
                   <h5 class="mb-0">
-                    <button class="btn btn-link w-100 text-left" type="button" data-toggle="collapse"
-                      data-target="#collapseFour" aria-controls="collapseFour">
-                      Can I resell the products?
+                    <button class="btn btn-link w-100 text-left collapsed" type="button" data-toggle="collapse"
+                      data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                      Apa itu Reksa Dana Pasar Uang ?
                       <i class="tim-icons icon-minimal-down float-right"></i>
                     </button>
                   </h5>
@@ -507,13 +415,38 @@
                 <div class="card-header" id="headingFifth">
                   <h5 class="mb-0">
                     <button class="btn btn-link w-100 text-left" type="button" data-toggle="collapse"
-                      data-target="#collapseFifth" aria-controls="collapseFifth">
-                      Where do I find the shipping details?
+                      data-target="#collapseFifth" aria-expanded="false" aria-controls="collapseFifth">
+                      Apa itu Reksa Dana Campuran ?
                       <i class="tim-icons icon-minimal-down float-right"></i>
                     </button>
                   </h5>
                 </div>
                 <div id="collapseFifth" class="collapse" aria-labelledby="headingFifth" data-parent="#accordionExample">
+                  <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
+                    wolf
+                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
+                    eiusmod.
+                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                    shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
+                    ea
+                    proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw
+                    denim
+                    aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingSix">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link w-100 text-left" type="button" data-toggle="collapse"
+                      data-target="#collapseSix" aria-controls="collapseSix">
+                      Apa Itu Reksa Dana Saham ?
+                      <i class="tim-icons icon-minimal-down float-right"></i>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
                   <div class="card-body">
                     Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
                     wolf

@@ -4,7 +4,7 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 
-from buku.models import *
+from reksadana.models import *
 
 # Bagian User Pass test
 def is_operator(user):
@@ -23,6 +23,7 @@ def index(request):
         request.session['is_operator'] = 'user'
 
     template_name = 'front/index.html'
+
     context = {
         'title': 'ini halaman Home',
     }
@@ -57,9 +58,20 @@ def berita(request):
     return render(request, template_name, context)
 
 def Reksadana(request):
+    list_type1 = Type.objects.get(name="Mixed Asset Fund")
+    list_type2 = Type.objects.get(name="Fixed Income Fund")
+    list_type3 = Type.objects.get(name="RD - Saham")
+    list_type4 = Type.objects.get(name="Money Market Fund")
+    list_reksadana = TReksadana.objects.all()
+
     template_name = 'front/reksadana.html'
     context = {
-        'title' : 'Ini Halaman Register'
+        'title' : 'Ini Halaman Register',
+        'reksadana' : list_reksadana,
+        'type1' : list_type1,
+        'type2' : list_type2,
+        'type3' : list_type3,
+        'type4' : list_type4
     }
     return render(request, template_name, context)
 

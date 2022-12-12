@@ -98,12 +98,3 @@ def DeleteOperator(request, id):
     return redirect('operator')
 
 
-@user_passes_test(is_operator)
-@login_required
-# Bagian Tabel Admin
-def TabelAdmin(request):
-    template_name= 'back/Tabel_admin/TAdmin.html'
-    context = {
-        'title': 'ini halaman Tabel Admin',
-    }
-    return render(request, template_name, context)
