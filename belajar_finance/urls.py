@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from . views import index, account, contact, Reksadana, berita, postingan, Login, Logout, Register
+from . views import index, contact, Reksadana, berita, postingan, Login, Logout, Register
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,7 +24,6 @@ urlpatterns = [
 
     # halaman front end
     path('', index, name='index'),
-    path('account/', account, name='account'),
     path('contact/', contact, name='contact'),
     path('berita/', berita, name='berita'),
     path('postingan/', postingan, name='postingan'),

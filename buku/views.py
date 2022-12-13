@@ -11,6 +11,7 @@ def is_operator(user):
         return False
 
 #Bagian Nav Dashboard
+@user_passes_test(is_operator)
 @login_required
 def dashboard(request):
     if request.user.groups.filter(name='Operator').exists():
@@ -23,34 +24,10 @@ def dashboard(request):
     return render(request, template_name, context)
 
 @login_required
-def Charts(request):
-    template_name= 'back/Charts.html'
-    context = {
-        'title': 'ini halaman Charts'
-    }
-    return render(request, template_name, context)
-
-@login_required
 def Calendar(request):
     template_name= 'back/calendar.html'
     context = {
         'title': 'ini halaman Kalender'
-    }
-    return render(request, template_name, context)
-
-@login_required
-def Widgets(request):
-    template_name ='back/widgets.html'
-    context = {
-        'title' : 'Ini halaman Widgets'
-    }
-    return render(request, template_name, context)
-    
-@login_required
-def User(request):
-    template_name = 'back/Login-Register/user.html'
-    context = {
-        'title' : 'Ini Halaman User'
     }
     return render(request, template_name, context)
 

@@ -78,7 +78,7 @@
                                   <p class="card-title">Custodion</p>
                                 </th>
                                 <th class="text-center">
-                                  <p class="card-title">Type</p>
+                                  <p class="card-title">Jenis</p>
                                 </th>
                                 {% if request.session.is_operator == 'operator' %}
                                 <th class="text-center">
@@ -88,22 +88,19 @@
                               </tr>
                             </thead>
                             <tbody>
-                              {% for index in reksadana %}
-                              {% if index.type == type2 %}
+                              {% for index in reksadana1 %}
                               <tr>
                                 <th scope="row">{{ forloop.counter }}</th>
                                 <td>{{ index.name }}</td>
                                 <td>{{ index.management }}</td>
                                 <td>{{ index.custodian }}</td>
-                                <td class="text-center">{{ index.type }}</td>
+                                <td class="text-center">{{ index.tipe_reksadana }}</td>
                                 {% if request.session.is_operator == 'operator' %}
                                 <td class="text-center">
-                                  <a href="{% url 'lihat_buku' index.id %}" class="btn btn-sm btn-info"><i
-                                      class="bi bi-eye"></i>Plus</a>
+                                  <a href="{% url 'lihat_buku' index.id %}"><i class="fa fa-plus-circle"></i></a>
                                 </td>
                                 {% endif %}
                               </tr>
-                              {% endif %}
                               {% endfor %}
                             </tbody>
                           </table>
@@ -139,30 +136,29 @@
                                   <p class="card-title">Custodion</p>
                                 </th>
                                 <th class="text-center">
-                                  <p class="card-title">Type</p>
+                                  <p class="card-title">Jenis</p>
                                 </th>
+                                {% if request.session.is_operator == 'operator' %}
                                 <th class="text-center">
                                   <p class="card-title">Actions</p>
                                 </th>
+                                {% endif %}
                               </tr>
                             </thead>
                             <tbody>
-                              {% for index in reksadana %}
-                              {% if index.type == type4 %}
+                              {% for index in reksadana2 %}
                               <tr>
                                 <th scope="row">{{ forloop.counter }}</th>
                                 <td>{{ index.name }}</td>
                                 <td>{{ index.management }}</td>
                                 <td>{{ index.custodian }}</td>
-                                <td class="text-center">{{ index.type }}</td>
+                                <td class="text-center">{{ index.tipe_reksadana }}</td>
                                 {% if request.session.is_operator == 'operator' %}
                                 <td class="text-center">
-                                  <a href="{% url 'lihat_buku' index.id %}" class="btn btn-sm btn-info"><i
-                                      class="bi bi-eye"></i>Plus</a>
+                                  <a href="{% url 'lihat_buku' index.id %}"><i class="fa fa-plus-circle"></i></a>
                                 </td>
                                 {% endif %}
                               </tr>
-                              {% endif %}
                               {% endfor %}
                             </tbody>
                           </table>
@@ -198,30 +194,29 @@
                                   <p class="card-title">Custodion</p>
                                 </th>
                                 <th class="text-center">
-                                  <p class="card-title">Type</p>
+                                  <p class="card-title">Jenis</p>
                                 </th>
+                                {% if request.session.is_operator == 'operator' %}
                                 <th class="text-center">
                                   <p class="card-title">Actions</p>
                                 </th>
+                                {% endif %}
                               </tr>
                             </thead>
                             <tbody>
-                              {% for index in reksadana %}
-                              {% if index.type == type1 %}
+                              {% for index in reksadana3 %}
                               <tr>
                                 <th scope="row">{{ forloop.counter }}</th>
                                 <td>{{ index.name }}</td>
                                 <td>{{ index.management }}</td>
                                 <td>{{ index.custodian }}</td>
-                                <td class="text-center">{{ index.type }}</td>
+                                <td class="text-center">{{ index.tipe_reksadana }}</td>
                                 {% if request.session.is_operator == 'operator' %}
                                 <td class="text-center">
-                                  <a href="{% url 'lihat_buku' index.id %}" class="btn btn-sm btn-info"><i
-                                      class="bi bi-eye"></i>Plus</a>
+                                  <a href="{% url 'lihat_buku' index.id %}"><i class="fa fa-plus-circle"></i></a>
                                 </td>
                                 {% endif %}
                               </tr>
-                              {% endif %}
                               {% endfor %}
                             </tbody>
                           </table>
@@ -231,7 +226,7 @@
                   </div>
                 </div>
               </div>
-              <div class="tab-pane active" id="link14">
+              <div class="tab-pane" id="link14">
                 <div class="col-md-6 ml-auto mr-auto text-center">
                   <h2 class="title mb-4">Reksadana Saham</h2>
                   <div class="section-space"></div>
@@ -257,30 +252,29 @@
                                   <p class="card-title">Custodion</p>
                                 </th>
                                 <th class="text-center">
-                                  <p class="card-title">Type</p>
+                                  <p class="card-title">Jenis</p>
                                 </th>
+                                {% if request.session.is_operator == 'operator' %}
                                 <th class="text-center">
                                   <p class="card-title">Actions</p>
                                 </th>
+                                {% endif %}
                               </tr>
                             </thead>
                             <tbody>
-                              {% for index in reksadana %}
-                              {% if index.type == type3 %}
+                              {% for index in reksadana4 %}
                               <tr>
                                 <th scope="row">{{ forloop.counter }}</th>
                                 <td>{{ index.name }}</td>
                                 <td>{{ index.management }}</td>
                                 <td>{{ index.custodian }}</td>
-                                <td class="text-center">{{ index.type }}</td>
+                                <td class="text-center">{{ index.tipe_reksadana }}</td>
                                 {% if request.session.is_operator == 'operator' %}
                                 <td class="text-center">
-                                  <a href="{% url 'lihat_buku' index.id %}" class="btn btn-sm btn-info"><i
-                                      class="bi bi-eye"></i>Plus</a>
+                                  <a href="{% url 'lihat_buku' index.id %}"><i class="fa fa-plus-circle"></i></a>
                                 </td>
                                 {% endif %}
                               </tr>
-                              {% endif %}
                               {% endfor %}
                             </tbody>
                           </table>
@@ -314,7 +308,7 @@
               <div class="card">
                 <div class="card-header" id="headingOne">
                   <h5 class="mb-0">
-                    <button class="btn btn-link w-100 text-left collapsed" type="button" data-toggle="collapse"
+                    <button class="btn btn-link w-100 text-left collapsed" tipe="button" data-toggle="collapse"
                       data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                       Apa Itu Reksa Dana ?
                       <i class="tim-icons icon-minimal-down float-right"></i>
@@ -323,23 +317,21 @@
                 </div>
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                   <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                    wolf
-                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                    eiusmod.
-                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                    shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
-                    ea
-                    proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw
-                    denim
-                    aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    Reksa dana adalah wadah dan pola pengelolaan dana/modal bagi sekumpulan investor untuk berinvestasi
+                    dalam
+                    instrumen-instrumen investasi yang tersedia di pasar modal dengan cara membeli unit penyertaan reksa
+                    dana berupa surat berharga
+                    seperti :
+                    saham, obligasi, dan instrumen keuangan lainnya.
+                    Cara investasi reksadana bekerja adalah dengan mempercayakan uang yang kita miliki kepada
+                    manajer investasi.
                   </div>
                 </div>
               </div>
               <div class="card">
                 <div class="card-header" id="headingTwo">
                   <h5 class="mb-0">
-                    <button class="btn btn-link w-100 text-left collapsed" type="button" data-toggle="collapse"
+                    <button class="btn btn-link w-100 text-left collapsed" tipe="button" data-toggle="collapse"
                       data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                       Kenapa Investasi Reksa Dana ?
                       <i class="tim-icons icon-minimal-down float-right"></i>
@@ -348,23 +340,16 @@
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                   <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                    wolf
-                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                    eiusmod.
-                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                    shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
-                    ea
-                    proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw
-                    denim
-                    aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    Reksa dana disebut sebagai instrumen investasi yang bisa menjadi pilihan bagi investor pemula.
+                    Pasalnya, instrumen
+                    investasi ini mengandalkan manajer investasi yang andal dalam meracik portofolionya.
                   </div>
                 </div>
               </div>
               <div class="card">
                 <div class="card-header" id="headingThree">
                   <h5 class="mb-0">
-                    <button class="btn btn-link w-100 text-left collapsed" type="button" data-toggle="collapse"
+                    <button class="btn btn-link w-100 text-left collapsed" tipe="button" data-toggle="collapse"
                       data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                       Apa Itu Reksa Dana Pendapatan Tetap ?
                       <i class="tim-icons icon-minimal-down float-right"></i>
@@ -373,23 +358,19 @@
                 </div>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                   <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                    wolf
-                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                    eiusmod.
-                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                    shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
-                    ea
-                    proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw
-                    denim
-                    aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    Reksa dana pendapatan tetap adalah dana yang diinvestasikan minimum 80% dari nilai aktiva bersih
+                    yang berupa surat utang
+                    atau obligasi, dan sisanya merupakan investasi yang ditanamkan pada pasar uang.
+                    Tujuannya untuk menghasilkan tingkat pengembalian yang stabil. Risikonya relatif lebih besar
+                    daripada reksadana pasar
+                    uang.
                   </div>
                 </div>
               </div>
               <div class="card">
                 <div class="card-header" id="headingFour">
                   <h5 class="mb-0">
-                    <button class="btn btn-link w-100 text-left collapsed" type="button" data-toggle="collapse"
+                    <button class="btn btn-link w-100 text-left collapsed" tipe="button" data-toggle="collapse"
                       data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                       Apa itu Reksa Dana Pasar Uang ?
                       <i class="tim-icons icon-minimal-down float-right"></i>
@@ -398,23 +379,24 @@
                 </div>
                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
                   <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                    wolf
-                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                    eiusmod.
-                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                    shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
-                    ea
-                    proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw
-                    denim
-                    aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    Reksadana pasar uang adalah jenis reksadana yang melakukan investasi pada jenis instrumen investasi
+                    pasar uang dangan
+                    masa jatuh tempo kurang dari satu tahun.
+                    Bentuk instrumen investasinya dapat berupa time deposit (deposito berjangka), certificate of deposit
+                    (sertifikat
+                    deposito), Sertifikat Bank Indonesia (SBI), Surat Berharga Pasar Uang (SBPU) dan berbagai jenis
+                    instrumen investasi
+                    pasar uang lainnya.
+                    Tujuannya untuk menjaga likuiditas dan pemeliharaan modal. Risikonya relatif paling rendah
+                    dibandingkan reksadana jenis
+                    lainnya.
                   </div>
                 </div>
               </div>
               <div class="card">
                 <div class="card-header" id="headingFifth">
                   <h5 class="mb-0">
-                    <button class="btn btn-link w-100 text-left" type="button" data-toggle="collapse"
+                    <button class="btn btn-link w-100 text-left" tipe="button" data-toggle="collapse"
                       data-target="#collapseFifth" aria-expanded="false" aria-controls="collapseFifth">
                       Apa itu Reksa Dana Campuran ?
                       <i class="tim-icons icon-minimal-down float-right"></i>
@@ -423,23 +405,19 @@
                 </div>
                 <div id="collapseFifth" class="collapse" aria-labelledby="headingFifth" data-parent="#accordionExample">
                   <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                    wolf
-                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                    eiusmod.
-                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                    shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
-                    ea
-                    proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw
-                    denim
-                    aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    Reksadana campuran adalah jenis reksadana mengalokasikan dana investasinya dalam portofolio yang
+                    bervariasi. Instrumen
+                    investasinya dapat berbentuk saham dan dikombinasikan dengan obligasi.
+                    Tujuannya untuk pertumbuhan harga dan pendapatan. Risiko reksadana campuran bersifat moderat dengan
+                    potensi tingkat
+                    pengembalian yang relatif lebih tinggi dibandingkan reksadana pendapatan tetap.
                   </div>
                 </div>
               </div>
               <div class="card">
                 <div class="card-header" id="headingSix">
                   <h5 class="mb-0">
-                    <button class="btn btn-link w-100 text-left" type="button" data-toggle="collapse"
+                    <button class="btn btn-link w-100 text-left" tipe="button" data-toggle="collapse"
                       data-target="#collapseSix" aria-controls="collapseSix">
                       Apa Itu Reksa Dana Saham ?
                       <i class="tim-icons icon-minimal-down float-right"></i>
@@ -448,16 +426,13 @@
                 </div>
                 <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
                   <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                    wolf
-                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                    eiusmod.
-                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                    shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
-                    ea
-                    proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw
-                    denim
-                    aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    Reksadana saham adalah jenis reksadana yang menginvestasikan sekurang-kurangnya 80 persen dari
+                    aktivanya dalam bentuk
+                    efek bersifat ekuitas.
+                    Tujuannya untuk pertumbuhan harga saham atau unit dalam jangka panjang. Risikonya relatif lebih
+                    tinggi dari reksadana
+                    pasar uang dan reksadana pendapatan tetap, namun memiliki potensi tingkat pengembalian yang paling
+                    tinggi.
                   </div>
                 </div>
               </div>

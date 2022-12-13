@@ -36,13 +36,6 @@ def contact(request):
     }
     return render(request, template_name, context)
 
-@login_required
-def account(request):
-    template_name = 'front/account.html'
-    context = {
-        'title' : 'ini halaman Akun'
-    }
-    return render(request, template_name, context)
 def postingan(request):
     template_name = 'front/blog-post.html'
     context = {
@@ -58,20 +51,19 @@ def berita(request):
     return render(request, template_name, context)
 
 def Reksadana(request):
-    list_type1 = Type.objects.get(name="Mixed Asset Fund")
-    list_type2 = Type.objects.get(name="Fixed Income Fund")
-    list_type3 = Type.objects.get(name="RD - Saham")
-    list_type4 = Type.objects.get(name="Money Market Fund")
-    list_reksadana = TReksadana.objects.all()
+    list_reksadana1 = TReksadana.objects.filter(tipe_reksadana="Fixed Income Fund")
+    list_reksadana2 = TReksadana.objects.filter(tipe_reksadana="Money Market Fund")
+    list_reksadana3 = TReksadana.objects.filter(tipe_reksadana="Mixed Asset Fund")
+    list_reksadana4 = TReksadana.objects.filter(tipe_reksadana="RD - Saham")
 
     template_name = 'front/reksadana.html'
     context = {
         'title' : 'Ini Halaman Register',
-        'reksadana' : list_reksadana,
-        'type1' : list_type1,
-        'type2' : list_type2,
-        'type3' : list_type3,
-        'type4' : list_type4
+        'reksadana1' : list_reksadana1,
+        'reksadana2' : list_reksadana2,
+        'reksadana3' : list_reksadana3,
+        'reksadana4' : list_reksadana4
+        
     }
     return render(request, template_name, context)
 

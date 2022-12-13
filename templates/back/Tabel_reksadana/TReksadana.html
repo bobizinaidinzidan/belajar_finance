@@ -13,9 +13,7 @@
                     {% if request.session.is_operator == 'operator' %}
                     <div>
                         <a href="{% url 'singkron_data_reksadana' %}" class="btn">Singkronisasi Data Reksadana</a>
-                        <a href="{% url 'singkron_data_type' %}" class="btn">Singkronisasi Data Jenis Reksadana</a>
                     </div>
-
                     {% endif %}
                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
@@ -37,7 +35,7 @@
                                 <td>{{ index.name }}</td>
                                 <td>{{ index.management }}</td>
                                 <td>{{ index.custodian }}</td>
-                                <td class="text-center">{{ index.type }}</td>
+                                <td class="text-center">{{ index.tipe_reksadana }}</td>
                                 {% if request.session.is_operator == 'operator' %}
                                 <td class="text-center">
                                     <a href="{% url 'lihat_buku' index.id %}" class="btn btn-sm btn-info"><i
@@ -45,7 +43,7 @@
                                     <a href="{% url 'edit_buku' index.id %}" class="btn btn-sm btn-warning"><i
                                             class="bi bi-pencil-square"></i></a>
                                     <a onclick="alert('Anda yakin menghapus data?')"
-                                        href="{% url 'delete_buku' index.id %}" class="btn btn-sm btn-danger">
+                                        href="{% url 'delete_reksa' index.id %}" class="btn btn-sm btn-danger">
                                         <i class="bi bi-trash"></i></a>
                                 </td>
                                 {% endif %}
