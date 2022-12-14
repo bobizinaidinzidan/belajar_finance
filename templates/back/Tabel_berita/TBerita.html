@@ -7,45 +7,53 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Data Product Reksadana</h4>
+                    <h4 class="card-title">Data Berita</h4>
                 </div>
                 <div class="card-body">
                     {% if request.session.is_operator == 'operator' %}
                     <div>
-                        <a href="{% url 'tambah_reksadana' %}" class="btn">
+                        <a href="{% url 'tambah_berita' %}" class="btn">
                             <i class="fa fa-plus"></i> Tambah Data
-                            Reksadana
+                            Berita
                         </a>
-                        <a href="{% url 'singkron_data_reksadana' %}" class="btn">Singkronisasi Data API Reksadana</a>
+                        <a href="{% url 'singkrondataberita' %}" class="btn">Singkronisasi Data Berita</a>
                     </div>
                     {% endif %}
                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
                                 <th class="text-center">#</th>
-                                <th class="text-left">Nama</th>
-                                <th class="text-left">Management</th>
-                                <th class="text-center">Bank Custodian</th>
-                                <th class="text-center">Type Reksadana</th>
+                                <th class="text-left">Author</th>
+                                <th class="text-left">Judul</th>
+                                <th class="text-left">Tipe Berita</th>
+                                <th class="text-center">Deskripsi</th>
+                                <th class="text-center">URL Berita</th>
+                                <th class="text-left">URL Gambar</th>
+                                <th class="text-center">Tanggal Terbit</th>
+                                <th class="text-center">Isi/Content</th>
                                 {% if request.session.is_operator == 'operator' %}
                                 <th class="text-left">Actions</th>
                                 {% endif %}
                             </tr>
                         </thead>
                         <tbody>
-                            {% for index in reksadana %}
+                            {% for index in berita %}
                             <tr>
                                 <th class="text-center" scope="row">{{ forloop.counter }}</th>
-                                <td>{{ index.name }}</td>
-                                <td>{{ index.management }}</td>
-                                <td>{{ index.custodian }}</td>
-                                <td class="text-center">{{ index.tipe_reksadana }}</td>
+                                <td class="text-center">{{ index.author }}</td>
+                                <td class="text-center">{{ index.title }}</td>
+                                <td class="text-center">{{ index.tipe_berita }}</td>
+                                <td class="text-center">{{ index.description }}</td>
+                                <td class="text-center">{{ index.url }}</td>
+                                <td class="text-center">{{ index.urlToImage }}</td>
+                                <td class="text-center">{{ index.publishedAt }}</td>
+                                <td>{{ index.content }}</td>
                                 {% if request.session.is_operator == 'operator' %}
                                 <td class="text-center">
-                                    <a href="{% url 'edit_reksa' index.id %}" class="btn btn-sm btn-warning"><i
+                                    <a href="{% url 'edit_berita' index.id %}" class="btn btn-sm btn-warning"><i
                                             class="bi bi-pencil-square"></i></a>
                                     <a onclick="alert('Anda yakin menghapus data?')"
-                                        href="{% url 'delete_reksa' index.id %}" class="btn btn-sm btn-danger">
+                                        href="{% url 'delete_berita' index.id %}" class="btn btn-sm btn-danger">
                                         <i class="bi bi-trash"></i></a>
                                 </td>
                                 {% endif %}

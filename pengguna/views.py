@@ -10,7 +10,7 @@ def is_operator(user):
     else:
         return False
 
-
+@user_passes_test(is_operator)
 @login_required
 # Bagian Tabel Operator
 def TabelOperator(request):
@@ -27,7 +27,7 @@ def TabelOperator(request):
 
 @user_passes_test(is_operator)
 @login_required
-def InputOperator(request):
+def EditOperator(request):
     template_name= 'back/Tabel_operator/Input_operator.html'
     list_group = Group.objects.all()
     if request.method == "POST":
@@ -57,44 +57,29 @@ def InputOperator(request):
 
 @user_passes_test(is_operator)
 @login_required
-def EditOperator(request, id):
-    template_name = 'back/Tabel_operator/Edit_operator.html'
-    list_user = User.objects.get(id=id)
-    
-    if request.method == 'POST':
-        input_penulis = request.POST.get('penulis')
-        input_jenis_buku = request.POST.get('jenis_buku')
-        input_judul = request.POST.get('judul')
-        input_sinopsis = request.POST.get('sinopsis')
-        input_penerbit = request.POST.get('penerbit')
-        input_tanggal_terbit = request.POST.get('tanggal_terbit')
-        
-        get_penulis = Penulis.objects.get(nama=input_penulis)
-        get_jenis_buku = Jenis.objects.get(nama=input_jenis_buku)
-
-        # Bagian Mengedit Data
-        list_user.penulis = get_penulis
-        get_buku.jenis_buku = get_jenis_buku
-        get_buku.judul = input_judul
-        get_buku.sinopsis = input_sinopsis
-        get_buku.penerbit = input_penerbit
-        get_buku.date = input_tanggal_terbit
-        get_buku.save()
-        
-        print("Update/Edit Data")
-    
-        return redirect(TabelBuku)
-    context = {
-        'title' : 'Ini Halaman Edit Data Buku',
-        'user' : list_user,
-    }
-    return render(request, template_name, context)
-
-@user_passes_test(is_operator)
-@login_required
 def DeleteOperator(request, id):
     get_user = User.objects.get(id=id)
     get_user.delete()
     return redirect('operator')
 
+@user_passes_test(is_operator)
+@login_required
+# Bagian Tabel Operator
+def TabelUser(request):
+    if request.user.groups.filter(name='Operator').exists():
+        request.session['is_operator'] = 'operator'
 
+    template_name= 'back/Tabel_user/TUser.html'
+    list_user = User.objects.all()
+    context = {
+        'title': 'ini halaman Tabel Operator',
+        'user': list_user,
+    }
+    return render(request, template_name, context)
+
+@user_passes_test(is_operator)
+@login_required
+def DeleteUser(request, id):
+    get_user = User.objects.get(id=id)
+    get_user.delete()
+    return redirect('user')

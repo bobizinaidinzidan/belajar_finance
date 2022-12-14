@@ -20,7 +20,6 @@ from . views import index, contact, Reksadana, berita, postingan, Login, Logout,
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('dashboard/', include('buku.urls')),
 
     # halaman front end
     path('', index, name='index'),
@@ -29,8 +28,13 @@ urlpatterns = [
     path('postingan/', postingan, name='postingan'),
     path('reksadana/', Reksadana, name='reksadana'),
 
+    # halaman Tabel buku
+    path('dashboard/', include('buku.urls')),
 
-    # halaman menu reksadana front end
+    # halaman Tabel berita
+    path('dashboard/', include('berita.urls')),
+
+    # halaman Tabel reksadana 
     path('dashboard/', include('reksadana.urls')),
     
     # Halaman Login Logout

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'buku',
     'pengguna',
     'reksadana',
+    'berita',
 ]
 
 MIDDLEWARE = [

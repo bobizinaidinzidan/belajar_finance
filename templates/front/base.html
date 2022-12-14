@@ -110,22 +110,12 @@
             </a>
           </li>
           {% elif request.session.is_operator == 'operator' %}
-          <li class="nav-item dropdown">
-            <a href="{% url 'contact' %}" class="nav-link">
-              About Me
-            </a>
-          </li>
           <li class="nav-item">
             <a class="nav-link btn btn-sm btn-default" href="{% url 'dashboard' %}">
               <p>Dashboard</p>
             </a>
           </li>
-          {% elif request.session.is_operator == 'user' %}
-          <li class="nav-item dropdown">
-            <a href="{% url 'contact' %}" class="nav-link">
-              About Me
-            </a>
-          </li>
+          {% elif request.user %}
           <li class="nav-item">
             <a class="nav-link btn btn-sm btn-default" href="{% url 'logout' %}">
               <p>Logout</p>
