@@ -26,13 +26,6 @@ def TabelReksadana(request):
 
 @user_passes_test(is_operator)
 @login_required
-def DeleteReksadana(request, id):
-    get_type = TReksadana.objects.get(id=id)
-    get_type.delete()
-    return redirect(TabelReksadana)
-
-@user_passes_test(is_operator)
-@login_required
 def InputReksadana(request):
     template_name= 'back/Tabel_reksadana/Input_reksadana.html'
     if request.method == "POST":
@@ -83,6 +76,12 @@ def EditReksadana(request, id):
     }
     return render(request, template_name, context)
 
+@user_passes_test(is_operator)
+@login_required
+def DeleteReksadana(request, id):
+    get_type = TReksadana.objects.get(id=id)
+    get_type.delete()
+    return redirect(TabelReksadana)
 
 # Mengambila data dan melakukan singkron data    
 @user_passes_test(is_operator)

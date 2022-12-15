@@ -10,7 +10,7 @@
     <div class="content-center">
       <div class="row">
         <div class="col-md-6 ml-auto mr-auto text-center">
-          <h1 class="title">Learning about Investing Makes Life Comfortable in Old Age
+          <h1 class="title">Reksadana
             <!--A Place for Entrepreneurs to Share and Discover New Stories-->
           </h1>
         </div>
@@ -51,6 +51,44 @@
                 </a>
               </li>
             </ul>
+            <form class="form-horizontal" method="GET">
+              {% csrf_token %}
+              <div class="row" id="checkRadios">
+                <div class="col-sm-6 col-lg-3">
+                  <p class="category">Show Entries</p>
+                  <div class="form-check form-check-radio">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="tambah_entry" id="exampleRadios1" value="10"
+                        checked="">
+                      <span class="form-check-sign"></span>
+                      10
+                    </label>
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="tambah_entry" id="exampleRadios1" value="25">
+                      <span class="form-check-sign"></span>
+                      25
+                    </label>
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="tambah_entry" id="exampleRadios1" value="50">
+                      <span class="form-check-sign"></span>
+                      50
+                    </label>
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="tambah_entry" id="exampleRadios1" value="100">
+                      <span class="form-check-sign"></span>
+                      100
+                    </label>
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="tambah_entry" id="exampleRadios1" value="250">
+                      <span class="form-check-sign"></span>
+                      250
+                    </label>
+                  </div>
+                  <button type="submit" class="btn btn-primary">tambah</button>
+
+                </div>
+              </div>
+            </form>
             <div class="tab-content tab-space">
               <div class="tab-pane active" id="link11">
                 <div class="col-md-6 ml-auto mr-auto text-center">
@@ -80,7 +118,7 @@
                                 <th class="text-center">
                                   <p class="card-title">Jenis</p>
                                 </th>
-                                {% if request.session.is_operator == 'operator' %}
+                                {% if request.user %}
                                 <th class="text-center">
                                   <p class="card-title">Actions</p>
                                 </th>
@@ -89,19 +127,20 @@
                             </thead>
                             <tbody>
                               {% for index in reksadana1 %}
-                              <tr>
+                              {% if forloop.counter <= show %} <tr>
                                 <th scope="row">{{ forloop.counter }}</th>
                                 <td>{{ index.name }}</td>
                                 <td>{{ index.management }}</td>
                                 <td>{{ index.custodian }}</td>
                                 <td class="text-center">{{ index.tipe_reksadana }}</td>
-                                {% if request.session.is_operator == 'operator' %}
+                                {% if request.user %}
                                 <td class="text-center">
-                                  <a href="{% url 'lihat_buku' index.id %}"><i class="fa fa-plus-circle"></i></a>
+                                  <a href="#"><i class="fa fa-plus-circle"></i></a>
                                 </td>
                                 {% endif %}
-                              </tr>
-                              {% endfor %}
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
                             </tbody>
                           </table>
                         </div>
@@ -138,7 +177,7 @@
                                 <th class="text-center">
                                   <p class="card-title">Jenis</p>
                                 </th>
-                                {% if request.session.is_operator == 'operator' %}
+                                {% if request.user %}
                                 <th class="text-center">
                                   <p class="card-title">Actions</p>
                                 </th>
@@ -147,19 +186,20 @@
                             </thead>
                             <tbody>
                               {% for index in reksadana2 %}
-                              <tr>
+                              {% if forloop.counter <= show %} <tr>
                                 <th scope="row">{{ forloop.counter }}</th>
                                 <td>{{ index.name }}</td>
                                 <td>{{ index.management }}</td>
                                 <td>{{ index.custodian }}</td>
                                 <td class="text-center">{{ index.tipe_reksadana }}</td>
-                                {% if request.session.is_operator == 'operator' %}
+                                {% if request.user %}
                                 <td class="text-center">
-                                  <a href="{% url 'lihat_buku' index.id %}"><i class="fa fa-plus-circle"></i></a>
+                                  <a href="#"><i class="fa fa-plus-circle"></i></a>
                                 </td>
                                 {% endif %}
-                              </tr>
-                              {% endfor %}
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
                             </tbody>
                           </table>
                         </div>
@@ -196,7 +236,7 @@
                                 <th class="text-center">
                                   <p class="card-title">Jenis</p>
                                 </th>
-                                {% if request.session.is_operator == 'operator' %}
+                                {% if request.user %}
                                 <th class="text-center">
                                   <p class="card-title">Actions</p>
                                 </th>
@@ -205,19 +245,20 @@
                             </thead>
                             <tbody>
                               {% for index in reksadana3 %}
-                              <tr>
+                              {% if forloop.counter <= show %} <tr>
                                 <th scope="row">{{ forloop.counter }}</th>
                                 <td>{{ index.name }}</td>
                                 <td>{{ index.management }}</td>
                                 <td>{{ index.custodian }}</td>
                                 <td class="text-center">{{ index.tipe_reksadana }}</td>
-                                {% if request.session.is_operator == 'operator' %}
+                                {% if request.user %}
                                 <td class="text-center">
-                                  <a href="{% url 'lihat_buku' index.id %}"><i class="fa fa-plus-circle"></i></a>
+                                  <a href="#"><i class="fa fa-plus-circle"></i></a>
                                 </td>
                                 {% endif %}
-                              </tr>
-                              {% endfor %}
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
                             </tbody>
                           </table>
                         </div>
@@ -254,7 +295,7 @@
                                 <th class="text-center">
                                   <p class="card-title">Jenis</p>
                                 </th>
-                                {% if request.session.is_operator == 'operator' %}
+                                {% if request.user %}
                                 <th class="text-center">
                                   <p class="card-title">Actions</p>
                                 </th>
@@ -263,19 +304,20 @@
                             </thead>
                             <tbody>
                               {% for index in reksadana4 %}
-                              <tr>
+                              {% if forloop.counter <= show %} <tr>
                                 <th scope="row">{{ forloop.counter }}</th>
                                 <td>{{ index.name }}</td>
                                 <td>{{ index.management }}</td>
                                 <td>{{ index.custodian }}</td>
                                 <td class="text-center">{{ index.tipe_reksadana }}</td>
-                                {% if request.session.is_operator == 'operator' %}
+                                {% if request.user %}
                                 <td class="text-center">
-                                  <a href="{% url 'lihat_buku' index.id %}"><i class="fa fa-plus-circle"></i></a>
+                                  <a href="#"><i class="fa fa-plus-circle"></i></a>
                                 </td>
                                 {% endif %}
-                              </tr>
-                              {% endfor %}
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
                             </tbody>
                           </table>
                         </div>
@@ -298,8 +340,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 ml-auto mr-auto text-center">
-            <h2 class="title mb-4 mt-5" style="text-decoration-line: underline;">Frequently asked question</h2>
-
+            <h2 class="title mb-4 mt-5" style="text-decoration-line: underline;">Informasi Tambahan</h2>
           </div>
         </div>
         <div class="row">

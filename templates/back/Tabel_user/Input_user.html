@@ -6,62 +6,66 @@
     <div class="col-md-12">
       <div class="card ">
         <div class="card-header ">
-          <h4 class="card-title">Input Data Buku</h4>
+          <h4 class="card-title">Input Data User</h4>
         </div>
         <div class="card-body ">
           <form class="form-horizontal" method="POST">
             {% csrf_token %}
             <div class="row">
-              <label class="col-md-2 col-form-label">Penulis</label>
+              <label class="col-md-2 col-form-label">Username</label>
               <div class="col-sm-10">
                 <div class="form-group">
-                  <input type="text" class="form-control" name="penulis">
+                  <input type="text" class="form-control" name="username">
                 </div>
               </div>
             </div>
             <div class="row">
-              <label class="col-md-2 col-form-label">Jenis Buku</label>
+              <label class="col-sm-2 col-form-label">Password</label>
               <div class="col-sm-10">
                 <div class="form-group">
-                  <input type="text" class="form-control" name="jenis_buku">
+                  <input type="password" class="form-control" name="password">
                 </div>
               </div>
             </div>
             <div class="row">
-              <label class="col-md-2 col-form-label">Judul</label>
+              <label class="col-md-2 col-form-label">Email</label>
               <div class="col-sm-10">
                 <div class="form-group">
-                  <input type="text" class="form-control" name="judul">
+                  <input type="email" class="form-control" name="email">
                 </div>
               </div>
             </div>
             <div class="row">
-              <label class="col-md-2 col-form-label">Sinopsis</label>
+              <label class="col-md-2 col-form-label">Group</label>
               <div class="col-sm-10">
-                <div class="form-group">
-                  <textarea name="sinopsis" class="form-control"
-                    placeholder="   type for sinopsis your book...."></textarea>
+                <div class="dropdown bootstrap-select">
+                  <select name="group" class="selectpicker" data-size="7" data-style="btn btn-secondary btn-round"
+                    title="Group User" tabindex="-98">
+                    {% for index in group %}
+                    <option value="{{ index.name }}">{{ index.name }}</option>
+                    {% endfor %}
+                  </select>
                 </div>
               </div>
             </div>
             <div class="row">
-              <label class="col-md-2 col-form-label">Penerbit</label>
+              <label class="col-md-2 col-form-label">First Name</label>
               <div class="col-sm-10">
                 <div class="form-group">
-                  <input type="text" class="form-control" name="penerbit">
+                  <input type="text" class="form-control" name="first_name">
                 </div>
               </div>
             </div>
             <div class="row">
-              <label class="col-md-2 col-form-label">Tanggal Terbit</label>
+              <label class="col-md-2 col-form-label">Last Name</label>
               <div class="col-sm-10">
                 <div class="form-group">
-                  <input type="text" class="form-control datepicker" name="tanggal_terbit" value="11/27/2022">
+                  <input type="text" class="form-control" name="last_name">
                 </div>
               </div>
             </div>
             <div class="card-footer ">
-              <a href="{% url 'Tbuku' %}" class="btn btn-primary">Kembali</a>
+              <a href="{% url 'operator' %}" class="btn btn-primary">Kembali</a>
               <button type="submit" class="btn btn-primary">Kirim</button>
             </div>
           </form>

@@ -88,81 +88,39 @@ def EditReksadana(request, id):
 @user_passes_test(is_operator)
 @login_required
 def SingkronDataBerita(request):
-    key = 'a178644808ab47108ea5c7394d41d9f7'
-    api1 = requests.get(f'https://newsapi.org/v2/top-headlines?category=business&country=id&apiKey={key}')
-    data1 = api1.json()
+    api = requests.get('https://berita-indo-api.vercel.app/v1/cnbc-news/investment')
+    data = api.json()
 
-    for i in data1['articles']:
-        author_berita = i['author']
-        title_berita = i['title']
-        describtion_berita = i['description']
-        url_berita = i['url']
-        urlToImage_berita = i['urlToImage']
-        publishhedAt_berita = i['publishedAt']
-        content_berita = i['content']
-
-        berita_list = TBerita.objects.filter(title=title_berita)
-        get_berita = TypeBerita.objects.get(name="Business")
-
-        if berita_list.exists():
-            berita_update = berita_list.first()
-            berita_update.author = author_berita
-            berita_update.title = title_berita
-            berita_update.tipe_berita = get_berita
-            berita_update.description = describtion_berita
-            berita_update.url = url_berita
-            berita_update.urlToImage = urlToImage_berita
-            berita_update.publishedAt = publishhedAt_berita
-            berita_update.content =content_berita
-            berita_update.save()
-        else :
-            TBerita.objects.create(
-                author = author_berita,
-                title = title_berita,
-                tipe_berita = get_berita,
-                description = describtion_berita,
-                url = url_berita,
-                urlToImage = urlToImage_berita,
-                publishedAt = publishhedAt_berita,
-                content = content_berita,
-            )
-    
-    api2 = requests.get('https://berita-indo-api.vercel.app/v1/cnbc-news/investment')
-    data2 = api2.json()
-
-    for i in data2['data']:
+    for i in data['data']:
         author_berita = "CNBC News"
         title_berita = i['title']
         describtion_berita = i['contentSnippet']
         url_berita = i['link']
         urlToImage_berita = i['image']['large']
+        if urlToImage_berita == "":
+            urlToImage_berita = i['image']['small']
         publishhedAt_berita = i['isoDate']
-        content_berita = ""
-
+        get_berita = "Investment"
         berita_list = TBerita.objects.filter(title=title_berita)
-        get_berita = TypeBerita.objects.get(name="Investment")
-
         if berita_list.exists():
             berita_update = berita_list.first()
             berita_update.author = author_berita
             berita_update.title = title_berita
-            berita_update.tipe_berita = get_berita
+            berita_update.tags = get_berita
             berita_update.description = describtion_berita
             berita_update.url = url_berita
             berita_update.urlToImage = urlToImage_berita
             berita_update.publishedAt = publishhedAt_berita
-            berita_update.content =content_berita
             berita_update.save()
         else :
             TBerita.objects.create(
                 author = author_berita,
                 title = title_berita,
-                tipe_berita = get_berita,
+                tags = get_berita,
                 description = describtion_berita,
                 url = url_berita,
                 urlToImage = urlToImage_berita,
                 publishedAt = publishhedAt_berita,
-                content = content_berita,
             )
     
     return redirect(TabelBerita)
