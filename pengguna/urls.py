@@ -9,7 +9,5 @@ urlpatterns = [
 
     # Halaman Tabel User
     path('user/', TabelUser, name='user'), 
-    #path('user/tambah',InputUser, name='tambah_user'),
-    path('user/edit-<str:id>', EditUser, name='edit_user'),
     path('user/delete-<str:id>', DeleteUser, name='delete_user'),
 ]

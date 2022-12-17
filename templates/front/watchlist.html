@@ -1,0 +1,144 @@
+{% extends 'front/base.html' %}
+{% load static %}
+{% block content %}
+<!-- End Navbar -->
+<div class="wrapper">
+  <div class="page-header page-header-small header-filter">
+    <div class="page-header-image" data-parallax="true"
+      style="background-image: url('../static/front/img/ruvim-noga.jpg');">
+    </div>
+    <div class="content-center">
+      <div class="row">
+        <div class="col-md-6 ml-auto mr-auto text-center">
+          <h1 class="title">Watchlist
+            <!--A Place for Entrepreneurs to Share and Discover New Stories-->
+          </h1>
+          <br />
+          {% if request.user.is_anonymous %}
+          <h4 class="description">Lakukan <a href="{% url 'login' %}">Login</a></h4>
+          {% elif request.user %}
+          <a><i class="fa fa-user-circle"></i></a>
+          <h4 class="description">{{request.user}}</h4>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="space-70"></div>
+<div class="cd-section" id="tables-2">
+  <!--     *********    Table 2     *********      -->
+  <div class="cd-section" id="tables">
+    <!--     *********    Table 2     *********      -->
+    <div class="tables-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mx-auto">
+            <!--<p class="category">Horizontal tabs</p>-->
+            <form class="form-horizontal" method="GET">
+              {% csrf_token %}
+              <div class="row" id="checkRadios">
+                <div class="col-sm-6 col-lg-3">
+                  <p class="category">Show Entries</p>
+                  <div class="form-check form-check-radio">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="tambah_entry" id="exampleRadios1" value="10"
+                        checked="">
+                      <span class="form-check-sign"></span>
+                      10
+                    </label>
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="tambah_entry" id="exampleRadios1" value="25">
+                      <span class="form-check-sign"></span>
+                      25
+                    </label>
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="tambah_entry" id="exampleRadios1" value="50">
+                      <span class="form-check-sign"></span>
+                      50
+                    </label>
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="tambah_entry" id="exampleRadios1" value="100">
+                      <span class="form-check-sign"></span>
+                      100
+                    </label>
+                  </div>
+                  <button type="submit" class="btn btn-primary">tambah</button>
+                </div>
+              </div>
+            </form>
+            <div class="tab-pane active" id="link11">
+              <div class="col-md-6 ml-auto mr-auto text-center">
+                <h2 class="title mb-4">Watchlist</h2>
+                <div class="section-space"></div>
+              </div>
+              <div class="col-md-12 mx-auto">
+                <div>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="table-responsive mb-0">
+                        <table class="table table-pricing">
+                          <thead>
+                            <tr class="bg-primary">
+                              <th class="text-center">
+                                #
+                              </th>
+                              <th class="text-center">
+                                <b class="card-title">Nama</b>
+                              </th>
+                              <th class="text-center">
+                                <p class="card-title">Management</p>
+                              </th>
+                              <th class="text-center">
+                                <p class="card-title">Custodion</p>
+                              </th>
+                              <th class="text-center">
+                                <p class="card-title">Jenis</p>
+                              </th>
+                              {% if request.user.is_anonymous %}
+                              {% elif request.user %}
+                              <th class="text-center">
+                                <p class="card-title">Actions</p>
+                              </th>
+                              {% endif %}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for i in reksadana %}
+                            {% for index in watchlist %}
+                            {% if index.id_reksadana == i.id %}
+
+                            <tr>
+                              <th scope="row">{{ forloop.counter }}</th>
+                              <td>{{ i.name }}</td>
+                              <td>{{ index.management }}</td>
+                              <td>{{ reksadana.custodian }}</td>
+                              <td class="text-center">{{ index.tipe_reksadana }}</td>
+                              {% if request.user.is_anonymous %}
+                              {% elif request.user %}
+                              <td class="text-center">
+                                <a href="{% url 'add_watchlist' i.id %}"><i class="fa fa-trash"></i></a>
+                              </td>
+                              {% endif %}
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--     *********    END Table 2     *********      -->
+  </div>
+  <div class="space-70"></div>
+
+  {% endblock content %}

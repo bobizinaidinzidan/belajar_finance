@@ -19,7 +19,6 @@
   </div>
 </div>
 <div class="space-70"></div>
-<div class="space-70"></div>
 <div class="cd-section" id="tables-2">
   <!--     *********    Table 2     *********      -->
   <div class="cd-section" id="tables">
@@ -118,7 +117,8 @@
                                 <th class="text-center">
                                   <p class="card-title">Jenis</p>
                                 </th>
-                                {% if request.user %}
+                                {% if request.user.is_anonymous %}
+                                {% elif request.user %}
                                 <th class="text-center">
                                   <p class="card-title">Actions</p>
                                 </th>
@@ -133,9 +133,10 @@
                                 <td>{{ index.management }}</td>
                                 <td>{{ index.custodian }}</td>
                                 <td class="text-center">{{ index.tipe_reksadana }}</td>
-                                {% if request.user %}
+                                {% if request.user.is_anonymous %}
+                                {% elif request.user %}
                                 <td class="text-center">
-                                  <a href="#"><i class="fa fa-plus-circle"></i></a>
+                                  <a href="{% url 'add_watchlist' index.id %}"><i class="fa fa-plus-circle"></i></a>
                                 </td>
                                 {% endif %}
                                 </tr>
@@ -177,7 +178,8 @@
                                 <th class="text-center">
                                   <p class="card-title">Jenis</p>
                                 </th>
-                                {% if request.user %}
+                                {% if request.user.is_anonymous %}
+                                {% elif request.user %}
                                 <th class="text-center">
                                   <p class="card-title">Actions</p>
                                 </th>
@@ -192,9 +194,10 @@
                                 <td>{{ index.management }}</td>
                                 <td>{{ index.custodian }}</td>
                                 <td class="text-center">{{ index.tipe_reksadana }}</td>
-                                {% if request.user %}
+                                {% if request.user.is_anonymous %}
+                                {% elif request.user %}
                                 <td class="text-center">
-                                  <a href="#"><i class="fa fa-plus-circle"></i></a>
+                                  <a href="{% url 'add_watchlist' index.id %}"><i class="fa fa-plus-circle"></i></a>
                                 </td>
                                 {% endif %}
                                 </tr>
@@ -236,7 +239,8 @@
                                 <th class="text-center">
                                   <p class="card-title">Jenis</p>
                                 </th>
-                                {% if request.user %}
+                                {% if request.user.is_anonymous %}
+                                {% elif request.user %}
                                 <th class="text-center">
                                   <p class="card-title">Actions</p>
                                 </th>
@@ -251,9 +255,10 @@
                                 <td>{{ index.management }}</td>
                                 <td>{{ index.custodian }}</td>
                                 <td class="text-center">{{ index.tipe_reksadana }}</td>
-                                {% if request.user %}
+                                {% if request.user.is_anonymous %}
+                                {% elif request.user %}
                                 <td class="text-center">
-                                  <a href="#"><i class="fa fa-plus-circle"></i></a>
+                                  <a href="{% url 'add_watchlist' index.id %}"><i class="fa fa-plus-circle"></i></a>
                                 </td>
                                 {% endif %}
                                 </tr>
@@ -295,7 +300,8 @@
                                 <th class="text-center">
                                   <p class="card-title">Jenis</p>
                                 </th>
-                                {% if request.user %}
+                                {% if request.user.is_anonymous %}
+                                {% elif request.user %}
                                 <th class="text-center">
                                   <p class="card-title">Actions</p>
                                 </th>
@@ -310,9 +316,10 @@
                                 <td>{{ index.management }}</td>
                                 <td>{{ index.custodian }}</td>
                                 <td class="text-center">{{ index.tipe_reksadana }}</td>
-                                {% if request.user %}
+                                {% if request.user.is_anonymous %}
+                                {% elif request.user %}
                                 <td class="text-center">
-                                  <a href="#"><i class="fa fa-plus-circle"></i></a>
+                                  <a href="{% url 'add_watchlist' index.id %}"><i class="fa fa-plus-circle"></i></a>
                                 </td>
                                 {% endif %}
                                 </tr>

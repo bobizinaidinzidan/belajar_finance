@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.models import User, Group
 
 from reksadana.models import *
 from berita.models import *
@@ -25,7 +26,7 @@ def index(request):
     }
     return render(request, template_name, context)
 
-def contact(request):
+def Contact(request):
     template_name = 'front/contact-us.html'
     context = {
         'title': 'Ini Halman Home'
@@ -39,7 +40,7 @@ def postingan(request):
     }
     return render(request, template_name, context)
 
-def berita(request):
+def Berita(request):
     template_name = 'front/berita.html'
     list_berita = TBerita.objects.all()
     show_berita = 10
@@ -55,6 +56,9 @@ def berita(request):
     return render(request, template_name, context)
 
 def Reksadana(request):
+    if request.user.groups.filter(name='Operator').exists():
+        request.session['is_operator'] = 'operator'
+
     list_reksadana1 = TReksadana.objects.filter(tipe_reksadana="Fixed Income Fund")
     list_reksadana2 = TReksadana.objects.filter(tipe_reksadana="Money Market Fund")
     list_reksadana3 = TReksadana.objects.filter(tipe_reksadana="Mixed Asset Fund")
@@ -74,9 +78,62 @@ def Reksadana(request):
     }
     return render(request, template_name, context)
 
+def Watchlist(request):
+    if request.user.is_anonymous:
+        print("Login Dahulu")
+    else:
+        get_user = request.user
+    list_reksadana = TReksadana.objects.all()
+    list_watchlist = TWatchlist.objects.all()
+
+    #for i in list_reksadana:
+        #for index in list_watchlist:
+            #if str(index.id_reksadana) == i.name:
+                #print('Berhasil')
+    show_reksa = 10
+    if request.GET:
+        entry_data = request.GET.get('tambah_entry')
+        show_reksa = int(entry_data)
+
+    template_name = 'front/watchlist.html'
+    context = {
+            'title': 'Halaman Watchlist',
+            'watchlist': list_watchlist,
+            'reksadana': list_reksadana,
+            'show': show_reksa,
+        } 
+    return render(request, template_name, context)    
+
+def TambahWatchlist(request, id):
+    get_user = request.user
+    get_reksadana = TReksadana.objects.get(id=id)
+    find_user = TWatchlist.objects.filter(id_user=get_user)
+    find_reksadana = TWatchlist.objects.filter(id_reksadana=id)
+    if find_user.exists():    
+        for index in find_user:
+            print(index.id_reksadana)
+            if str(index.id_reksadana) == id:
+                update_watchlist = find_user.first()
+                update_watchlist.id_user = get_user
+                update_watchlist.id_reksadana = get_reksadana
+                update_watchlist.save()  
+        return addWatchlist(get_user, get_reksadana)          
+    else:
+        TWatchlist.objects.create(
+            id_user=get_user,
+            id_reksadana=get_reksadana,
+        )    
+        
+    
+    return redirect('reksadana')
+def addWatchlist(data_user, data_id_reksa):
+    TWatchlist.objects.create(
+            id_user=data_user,
+            id_reksadana=data_id_reksa,
+        )  
+    return redirect('reksadana')
 
 # Bagian Login & Registrasi
-
 def Login(request):
     if request.user.is_authenticated:
         return redirect('index')

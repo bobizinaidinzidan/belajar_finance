@@ -24,6 +24,8 @@
                         </thead>
                         <tbody>
                             {% for i in user %}
+                            {% if i.groups.all.0.name == "Operator" %}
+                            {% else %}
                             <tr>
                                 <td class="text-center" scope="row">{{forloop.counter}}</td>
                                 <td class="text-center">{{i.username}}</td>
@@ -31,14 +33,13 @@
                                 <td class="text-center">{{i.is_staff}}</td>
                                 {% if request.session.is_operator == 'operator' %}
                                 <td class="text-center">
-                                    <a href="{% url 'edit_user' i.id %}" class="btn btn-sm btn-warning"><i
-                                            class="bi bi-pencil-square"></i></a>
                                     <a onclick="alert('Anda yakin menghapus data?')" href="{% url 'delete_user' i.id %}"
                                         class="btn btn-sm btn-danger">
                                         <i class="bi bi-trash"></i></a>
                                 </td>
                                 {% endif %}
                             </tr>
+                            {% endif %}
                             {% endfor %}
 
                         </tbody>

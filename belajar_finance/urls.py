@@ -16,18 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from . views import index, contact, Reksadana, berita, postingan, Login, Logout, Register
+from . views import index, Contact, Reksadana, Berita, Watchlist, TambahWatchlist, postingan, Login, Logout, Register
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     # halaman front end
     path('', index, name='index'),
-    path('contact/', contact, name='contact'),
-    path('berita/', berita, name='berita'),
+    path('contact/', Contact, name='contact'),
+    path('berita/', Berita, name='berita'),
     path('postingan/', postingan, name='postingan'),
     path('reksadana/', Reksadana, name='reksadana'),
-
+    path('watchlist/', Watchlist, name='watchlist'),
+    path('watchlist_add-<str:id>', TambahWatchlist, name='add_watchlist'),
+    
     # halaman Tabel buku
     path('dashboard/', include('buku.urls')),
 
