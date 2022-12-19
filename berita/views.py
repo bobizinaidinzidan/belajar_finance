@@ -26,10 +26,10 @@ def TabelBerita(request):
 
 @user_passes_test(is_operator)
 @login_required
-def DeleteReksadana(request, id):
-    get_type = TReksadana.objects.get(id=id)
-    get_type.delete()
-    return redirect(TabelReksadana)
+def DeleteBerita(request, id):
+    get_berita = TBerita.objects.get(id=id)
+    get_berita.delete()
+    return redirect(TabelBerita)
 
 @user_passes_test(is_operator)
 @login_required

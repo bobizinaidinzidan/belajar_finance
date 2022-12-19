@@ -24,8 +24,6 @@
                         </thead>
                         <tbody>
                             {% for i in user %}
-                            {% if i.groups.all.0.name == "Operator" %}
-                            {% else %}
                             <tr>
                                 <td class="text-center" scope="row">{{forloop.counter}}</td>
                                 <td class="text-center">{{i.username}}</td>
@@ -39,7 +37,6 @@
                                 </td>
                                 {% endif %}
                             </tr>
-                            {% endif %}
                             {% endfor %}
 
                         </tbody>

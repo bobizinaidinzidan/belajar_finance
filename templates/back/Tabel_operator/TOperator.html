@@ -21,9 +21,7 @@
                                 <th class="text-center">First Name</th>
                                 <th class="text-center">Last Name</th>
                                 <th class="text-center">Is Staff</th>
-                                {% if request.session.is_operator == 'operator' %}
-                                <th class="text-center">Actions</th>
-                                {% endif %}
+
                             </tr>
                         </thead>
                         <tbody>
@@ -37,11 +35,7 @@
                                 <td class="text-center">{{i.first_name}}</td>
                                 <td class="text-center">{{i.last_name}}</td>
                                 <td class="text-center">{{i.is_staff}}</td>
-                                {% if request.session.is_operator == 'operator' %}
-                                <td class="text-center">
-                                    <a href="#" class="btn btn-sm btn-warning"><i class="bi bi-pencil-square"></i></a>
-                                </td>
-                                {% endif %}
+
                             </tr>
                             {% endif %}
                             {% endfor %}

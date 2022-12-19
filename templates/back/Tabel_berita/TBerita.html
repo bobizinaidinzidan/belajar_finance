@@ -30,7 +30,6 @@
                                 <th class="text-center">URL Berita</th>
                                 <th class="text-left">URL Gambar</th>
                                 <th class="text-center">Tanggal Terbit</th>
-                                <th class="text-center">Isi/Content</th>
                                 {% if request.session.is_operator == 'operator' %}
                                 <th class="text-left">Actions</th>
                                 {% endif %}
@@ -47,7 +46,6 @@
                                 <td class="text-center">{{ index.url }}</td>
                                 <td class="text-center">{{ index.urlToImage }}</td>
                                 <td class="text-center">{{ index.publishedAt }}</td>
-                                <td>{{ index.content }}</td>
                                 {% if request.session.is_operator == 'operator' %}
                                 <td class="text-center">
                                     <a href="{% url 'edit_berita' index.id %}" class="btn btn-sm btn-warning"><i

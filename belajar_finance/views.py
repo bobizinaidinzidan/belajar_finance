@@ -4,6 +4,8 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import User, Group
+from django.contrib.auth.hashers import make_password
+from pengguna.models import *
 
 from reksadana.models import *
 from berita.models import *
@@ -81,15 +83,17 @@ def Reksadana(request):
 def Watchlist(request):
     if request.user.is_anonymous:
         print("Login Dahulu")
+        return redirect(Login)
     else:
         get_user = request.user
+    
     list_reksadana = TReksadana.objects.all()
-    list_watchlist = TWatchlist.objects.all()
-
-    #for i in list_reksadana:
-        #for index in list_watchlist:
-            #if str(index.id_reksadana) == i.name:
-                #print('Berhasil')
+    
+    list_watchlist = TWatchlist.objects.filter(id_user=get_user)
+    for i in list_reksadana:
+        for index in list_watchlist:
+            if index.id_reksadana == i.id:
+                print('Berhasil')
     show_reksa = 10
     if request.GET:
         entry_data = request.GET.get('tambah_entry')
@@ -162,6 +166,33 @@ def Logout(request):
     return redirect('login')  
 
 def Register(request):
+    if request.POST:
+        input_username = request.POST.get('username')
+        input_password = request.POST.get('password')
+        input_firstname = request.POST.get('first_name')
+        input_lastname = request.POST.get('last_name')
+        input_email = request.POST.get('in_email')
+        print(input_email)
+        #try:
+        User.objects.create(
+            username = input_username,
+            password = make_password(input_password),
+            first_name = input_firstname,
+            last_name = input_lastname,
+            email = input_email,
+            is_staff = True,
+        )
+        get_user = User.objects.get(username=input_username)
+        get_group = TGroup.objects.get(name="User")
+        TAccount.objects.create(
+            user = get_user,
+            group = get_group
+        )
+        return redirect(index)
+        #except:
+            #pass
+        
+        #print(input_username, input_password, input_firstname, input_lastname, input_email)
     template_name = 'back/Login-Register/register.html'
     context = {
         'title' : 'Ini Halaman Register'
