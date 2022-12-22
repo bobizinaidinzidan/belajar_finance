@@ -10,10 +10,11 @@ class TGroup(models.Model):
 
     class Meta:
         verbose_name_plural = "Group"
+        
 class TAccount(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    group = models.ForeignKey(TGroup, on_delete=models.CASCADE)
+    list_user = models.OneToOneField(User, on_delete=models.CASCADE)
+    list_group = models.ForeignKey(TGroup, on_delete=models.CASCADE)
     def __str__(self):
-        return "{} - {}".format(self.user, self.group)
+        return "{} - {}".format(self.list_user, self.list_group)
     class Meta:
         verbose_name_plural = "Account"

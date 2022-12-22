@@ -6,66 +6,70 @@
     <div class="col-md-12">
       <div class="card ">
         <div class="card-header ">
-          <h4 class="card-title">Input Data User</h4>
+          <h4 class="card-title">Input Data Berita</h4>
         </div>
         <div class="card-body ">
           <form class="form-horizontal" method="POST">
             {% csrf_token %}
             <div class="row">
-              <label class="col-md-2 col-form-label">Username</label>
+              <label class="col-md-2 col-form-label">Penulis / author Berita</label>
               <div class="col-sm-10">
                 <div class="form-group">
-                  <input type="text" class="form-control" name="username">
+                  <input type="text" class="form-control" name="author">
                 </div>
               </div>
             </div>
             <div class="row">
-              <label class="col-sm-2 col-form-label">Password</label>
+              <label class="col-md-2 col-form-label">Title Berita</label>
               <div class="col-sm-10">
                 <div class="form-group">
-                  <input type="password" class="form-control" name="password">
+                  <input type="text" class="form-control" name="title">
                 </div>
               </div>
             </div>
             <div class="row">
-              <label class="col-md-2 col-form-label">Email</label>
+              <label class="col-md-2 col-form-label">Tags Berita</label>
               <div class="col-sm-10">
                 <div class="form-group">
-                  <input type="email" class="form-control" name="email">
+                  <input type="text" class="form-control" name="tags">
                 </div>
               </div>
             </div>
             <div class="row">
-              <label class="col-md-2 col-form-label">Group</label>
+              <label class="col-md-3 col-form-label">Deskripsi Berita</label>
               <div class="col-sm-10">
-                <div class="dropdown bootstrap-select">
-                  <select name="group" class="selectpicker" data-size="7" data-style="btn btn-secondary btn-round"
-                    title="Group User" tabindex="-98">
-                    {% for index in group %}
-                    <option value="{{ index.name }}">{{ index.name }}</option>
-                    {% endfor %}
-                  </select>
+                <div class="form-group">
+                  <textarea name="description" class="form-control"
+                    placeholder="   type for description your news...."></textarea>
                 </div>
               </div>
             </div>
             <div class="row">
-              <label class="col-md-2 col-form-label">First Name</label>
+              <label class="col-md-2 col-form-label">URL Berita</label>
               <div class="col-sm-10">
                 <div class="form-group">
-                  <input type="text" class="form-control" name="first_name">
+                  <input type="url" class="form-control" name="url_readmore">
                 </div>
               </div>
             </div>
             <div class="row">
-              <label class="col-md-2 col-form-label">Last Name</label>
+              <label class="col-md-2 col-form-label">URL Gambar</label>
               <div class="col-sm-10">
                 <div class="form-group">
-                  <input type="text" class="form-control" name="last_name">
+                  <input type="url" class="form-control" name="url_image">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <label class="col-md-2 col-form-label">Waktu Terbit</label>
+              <div class="col-sm-10">
+                <div class="form-group">
+                  <input type="datetime-local" class="form-control " name="publishedAt" value="11/27/2022">
                 </div>
               </div>
             </div>
             <div class="card-footer ">
-              <a href="{% url 'operator' %}" class="btn btn-primary">Kembali</a>
+              <a href="{% url 'Tberita' %}" class="btn btn-primary">Kembali</a>
               <button type="submit" class="btn btn-primary">Kirim</button>
             </div>
           </form>

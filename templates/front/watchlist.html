@@ -36,7 +36,6 @@
           <div class="col-md-12 mx-auto">
             <!--<p class="category">Horizontal tabs</p>-->
             <form class="form-horizontal" method="GET">
-              {% csrf_token %}
               <div class="row" id="checkRadios">
                 <div class="col-sm-6 col-lg-3">
                   <p class="category">Show Entries</p>
@@ -87,42 +86,26 @@
                                 <b class="card-title">Nama</b>
                               </th>
                               <th class="text-center">
-                                <p class="card-title">Management</p>
-                              </th>
-                              <th class="text-center">
-                                <p class="card-title">Custodion</p>
-                              </th>
-                              <th class="text-center">
-                                <p class="card-title">Jenis</p>
-                              </th>
-                              {% if request.user.is_anonymous %}
-                              {% elif request.user %}
-                              <th class="text-center">
                                 <p class="card-title">Actions</p>
                               </th>
-                              {% endif %}
                             </tr>
                           </thead>
                           <tbody>
-                            {% for i in reksadana %}
+                            {% if request.user.is_anonymous %}
+                            <tr>
+                              <th><a href="{% url 'login' %}">Lakukan Login Terlebih Dahulu !!!</a></th>
+                            </tr>
+                            {% elif request.user %}
                             {% for index in watchlist %}
-                            {% if index.id_reksadana == i.id %}
                             <tr>
                               <th scope="row">{{ forloop.counter }}</th>
-                              <td>{{ i.name }}</td>
-                              <td>{{ index.management }}</td>
-                              <td>{{ reksadana.custodian }}</td>
-                              <td class="text-center">{{ index.tipe_reksadana }}</td>
-                              {% if request.user.is_anonymous %}
-                              {% elif request.user %}
+                              <td>{{ index.id_reksadana }}</td>
                               <td class="text-center">
-                                <a href="{% url 'add_watchlist' i.id %}"><i class="fa fa-trash"></i></a>
+                                <a href="{% url 'delete_watchlist' index.id %}"><i class="fa fa-trash"></i></a>
                               </td>
-                              {% endif %}
                             </tr>
+                            {% endfor %}
                             {% endif %}
-                            {% endfor %}
-                            {% endfor %}
                           </tbody>
                         </table>
                       </div>

@@ -1,13 +1,9 @@
 from django.urls import path
-from pengguna.views import TabelOperator, DeleteOperator, TabelUser, InputUser, EditUser, DeleteUser
+from pengguna.views import TabelAccount, EditAccount, DeleteAccount
 #
 urlpatterns = [
-    # Halaman Tabel Operator
-    path('operator/', TabelOperator, name='operator'), 
-    #path('operator/edit-<str:id>', EditOperator, name='edit_operator'),
-    path('operator/delete-<str:id>', DeleteOperator, name='delete_operator'),
-
-    # Halaman Tabel User
-    path('user/', TabelUser, name='user'), 
-    path('user/delete-<str:id>', DeleteUser, name='delete_user'),
+    # Halaman Tabel Account
+    path('account/', TabelAccount, name='account'), 
+    path('account/delete-<str:id>', DeleteAccount, name='delete_account'),
+    path('account/edit-<str:id>', EditAccount, name='edit_account'),
 ]

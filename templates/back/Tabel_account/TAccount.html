@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Data User</h4>
+                    <h4 class="card-title">Data Account</h4>
                 </div>
                 <div class="card-body">
                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -15,24 +15,24 @@
                             <tr>
                                 <th class="text-center">#</th>
                                 <th class="text-center">Username</th>
-                                <th class="text-center">Email</th>
-                                <th class="text-center">Is Staff</th>
+                                <th class="text-center">Group</th>
                                 {% if request.session.is_operator == 'operator' %}
                                 <th class="text-center">Actions</th>
                                 {% endif %}
                             </tr>
                         </thead>
                         <tbody>
-                            {% for i in user %}
+                            {% for i in account %}
                             <tr>
                                 <td class="text-center" scope="row">{{forloop.counter}}</td>
-                                <td class="text-center">{{i.username}}</td>
-                                <td class="text-center">{{i.email}}</td>
-                                <td class="text-center">{{i.is_staff}}</td>
+                                <td class="text-center">{{i.list_user}}</td>
+                                <td class="text-center">{{i.list_group}}</td>
                                 {% if request.session.is_operator == 'operator' %}
                                 <td class="text-center">
-                                    <a onclick="alert('Anda yakin menghapus data?')" href="{% url 'delete_user' i.id %}"
-                                        class="btn btn-sm btn-danger">
+                                    <a href="{% url 'edit_account' i.id %}" class="btn btn-sm btn-warning"><i
+                                            class="bi bi-pencil-square"></i></a>
+                                    <a onclick="alert('Anda yakin menghapus data?')"
+                                        href="{% url 'delete_account' i.id %}" class="btn btn-sm btn-danger">
                                         <i class="bi bi-trash"></i></a>
                                 </td>
                                 {% endif %}

@@ -26,63 +26,72 @@ def TabelBerita(request):
 
 @user_passes_test(is_operator)
 @login_required
-def DeleteBerita(request, id):
-    get_berita = TBerita.objects.get(id=id)
-    get_berita.delete()
-    return redirect(TabelBerita)
-
-@user_passes_test(is_operator)
-@login_required
-def InputReksadana(request):
-    template_name= 'back/Tabel_reksadana/Input_reksadana.html'
+def InputBerita(request):
+    template_name= 'back/Tabel_berita/Input_berita.html'
     if request.method == "POST":
-        input_nama = request.POST.get('name')
-        input_manajer = request.POST.get('manajer')
-        input_bank_custodian = request.POST.get('custodian')
-        input_jenis_reksa = request.POST.get('jenis_reksa')
+        input_author = request.POST.get('author')
+        input_title = request.POST.get('title')
+        input_tags = request.POST.get('tags')
+        input_description = request.POST.get('description')
+        input_url = request.POST.get('url_readmore')
+        input_urlToImage = request.POST.get('url_image')
+        input_publishedAt = request.POST.get('publishedAt')
         
-        TReksadana.objects.create(
-            name = input_nama,
-            management = input_manajer,
-            custodian = input_bank_custodian,
-            tipe_reksadana = input_jenis_reksa,
+        TBerita.objects.create(
+            author = input_author,
+            title = input_title,
+            tags = input_tags,
+            description = input_description,
+            url = input_url,
+            urlToImage = input_urlToImage,
+            publishedAt = input_publishedAt,
         )
-        return redirect(TabelReksadana)
+        return redirect(TabelBerita)
     context= {
         'title' : 'ini halaman Input Reksadana',
     }
     return render(request, template_name, context)
 
-
 @user_passes_test(is_operator)
 @login_required
-def EditReksadana(request, id):
-    template_name = 'back/Tabel_reksadana/Edit_reksadana.html'
-    get_reksadana = TReksadana.objects.get(id=id)
+def EditBerita(request, id):
+    template_name = 'back/Tabel_berita/Edit_berita.html'
+    get_berita = TBerita.objects.get(id=id)
     
     if request.method == 'POST':
-        input_nama = request.POST.get('name')
-        input_manajer = request.POST.get('manajer')
-        input_bank_custodian = request.POST.get('custodian')
-        input_jenis_reksa = request.POST.get('jenis_reksa')
-        
+        input_author = request.POST.get('author')
+        input_title = request.POST.get('title')
+        input_tags = request.POST.get('tags')
+        input_description = request.POST.get('description')
+        input_url = request.POST.get('url_readmore')
+        input_urlToImage = request.POST.get('url_image')
+        input_publishedAt = request.POST.get('publishedAt')
         
         # Bagian Mengedit Data
-        get_reksadana.name = input_nama
-        get_reksadana.management = input_manajer
-        get_reksadana.custodian = input_bank_custodian
-        get_reksadana.tipe_reksadana = input_jenis_reksa
-        get_reksadana.save()
+        get_berita.author = input_author
+        get_berita.title = input_title
+        get_berita.tags = input_tags
+        get_berita.description = input_description
+        get_berita.url = input_url
+        get_berita.urlToImage = input_urlToImage
+        get_berita.publishedAt = input_publishedAt
+        get_berita.save()
         
         print("Update/Edit Data")
     
-        return redirect(TabelReksadana)
+        return redirect(TabelBerita)
     context = {
         'title' : 'Ini Halaman Edit Data reksadana',
-        'reksadana' : get_reksadana,
+        'berita' : get_berita,
     }
     return render(request, template_name, context)
 
+@user_passes_test(is_operator)
+@login_required
+def DeleteBerita(request, id):
+    get_berita = TBerita.objects.get(id=id)
+    get_berita.delete()
+    return redirect(TabelBerita)
 
 # Mengambila data dan melakukan singkron data    
 @user_passes_test(is_operator)

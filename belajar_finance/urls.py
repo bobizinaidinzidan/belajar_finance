@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from . views import index, Contact, Reksadana, Berita, Watchlist, TambahWatchlist, postingan, Login, Logout, Register
+from . views import index, Contact, Reksadana, Berita, Watchlist, TambahWatchlist, DeleteWatchlist, postingan, Login, Logout, Register
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,7 +29,8 @@ urlpatterns = [
     path('reksadana/', Reksadana, name='reksadana'),
     path('watchlist/', Watchlist, name='watchlist'),
     path('watchlist_add-<str:id>', TambahWatchlist, name='add_watchlist'),
-    
+    path('watchlist_delete-<str:id>', DeleteWatchlist, name='delete_watchlist'),
+
     # halaman Tabel buku
     path('dashboard/', include('buku.urls')),
 

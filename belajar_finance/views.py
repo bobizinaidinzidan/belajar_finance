@@ -83,17 +83,17 @@ def Reksadana(request):
 def Watchlist(request):
     if request.user.is_anonymous:
         print("Login Dahulu")
-        return redirect(Login)
+        list_reksadana = TReksadana.objects.all()
+        list_watchlist = TWatchlist.objects.all()
     else:
         get_user = request.user
-    
-    list_reksadana = TReksadana.objects.all()
-    
-    list_watchlist = TWatchlist.objects.filter(id_user=get_user)
-    for i in list_reksadana:
-        for index in list_watchlist:
-            if index.id_reksadana == i.id:
-                print('Berhasil')
+        
+        list_reksadana = TReksadana.objects.all()
+        list_watchlist = TWatchlist.objects.filter(id_user=get_user)
+        for i in list_reksadana:
+            for index in list_watchlist:
+                if index.id_reksadana == i.id:
+                    print('Berhasil')
     show_reksa = 10
     if request.GET:
         entry_data = request.GET.get('tambah_entry')
@@ -127,7 +127,10 @@ def TambahWatchlist(request, id):
             id_user=get_user,
             id_reksadana=get_reksadana,
         )    
-        
+def DeleteWatchlist(request, id):
+    get_watchlist = TWatchlist.objects.get(id=id)
+    get_watchlist.delete()       
+    return redirect(Watchlist) 
     
     return redirect('reksadana')
 def addWatchlist(data_user, data_id_reksa):

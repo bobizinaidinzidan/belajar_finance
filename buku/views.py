@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 from .models import *
-
+from pengguna.models import *
 # Bagian User Pass test
 def is_operator(user):
     if user.groups.filter(name='Operator').exists():
@@ -22,7 +22,8 @@ def dashboard(request):
         'title': 'ini halaman dashboard'
     }
     return render(request, template_name, context)
-
+    
+@user_passes_test(is_operator)
 @login_required
 def Calendar(request):
     template_name= 'back/calendar.html'

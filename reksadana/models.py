@@ -8,7 +8,7 @@ class TReksadana(models.Model):
     custodian = models.CharField(max_length=1000)
     tipe_reksadana = models.CharField(max_length=1000)
     def __str__(self):
-        return "{}".format(self.id)
+        return "{}".format(self.name)
     class Meta:
         verbose_name_plural = "Reksadana"
 
@@ -16,6 +16,6 @@ class TWatchlist(models.Model):
     id_user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     id_reksadana = models.ForeignKey(TReksadana, on_delete=models.CASCADE, blank=True, null=True)
     def __str__(self):
-        return int(self.id_reksadana)  
+        return str(self.id_reksadana)  
     class Meta:
         verbose_name_plural = "Watchlist"

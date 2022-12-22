@@ -1,11 +1,10 @@
 from django.urls import path
-from berita.views import TabelBerita, DeleteBerita, InputReksadana, EditReksadana, SingkronDataBerita
-#SingkronDataBerita
+from berita.views import TabelBerita, DeleteBerita, InputBerita, EditBerita, SingkronDataBerita
 
 urlpatterns = [
     path('berita', TabelBerita, name='Tberita'),
-    path('berita/tambah', InputReksadana, name='tambah_berita'),
-    path('berita/edit-<str:id>', EditReksadana, name='edit_berita'),
+    path('berita/tambah', InputBerita, name='tambah_berita'),
+    path('berita/edit-<str:id>', EditBerita, name='edit_berita'),
     path('berita/hapus-<str:id>', DeleteBerita, name='delete_berita'),
 
     # Singkronisasi Data API Berita
