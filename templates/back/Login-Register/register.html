@@ -1,93 +1,66 @@
 {% extends 'back/Login-Register/base.html' %}
-<!-- End Navbar -->
 {% block content %}
 <div class="wrapper wrapper-full-page ">
   <div class="full-page section-image" filter-color="black" data-image="../../../static/back/img/bg/jan-sendereks.jpg">
     <div class="content">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-md-5 ml-auto">
-            <div class="info-area info-horizontal mt-5">
-              <div class="description">
-                <h5 class="info-title">Berita</h5>
-                <p class="description">
-                  We've created the marketing campaign of the website. It was a very interesting collaboration.
-                </p>
-              </div>
-            </div>
-            <div class="info-area info-horizontal">
-              <div class="description">
-                <h5 class="info-title">Reksadana</h5>
-                <p class="description">
-                  We've developed the website with HTML5 and CSS3. The client has access to the code using GitHub.
-                </p>
-              </div>
-            </div>
-            <div class="info-area info-horizontal">
-              <div class="description">
-                <h5 class="info-title">Watchlist</h5>
-                <p class="description">
-                  There is also a Fully Customizable CMS Admin Dashboard for this product.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mr-auto">
-            <div class="card card-signup text-center">
+        <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+          <form class="form" method="POST">
+            <div class="card card-signup">
+              {% csrf_token %}
               <div class="card-header ">
-                <h4 class="card-title">Register</h4>
+                <h4 class="header text-center">Register</h4>
               </div>
               <div class="card-body ">
-                <form class="form" method="POST" action="">
-                  {% csrf_token %}
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="nc-icon nc-circle-10"></i>
-                      </span>
-                    </div>
-                    <input type="text" placeholder="Username..." class="form-control" name="username">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="nc-icon nc-circle-10"></i>
+                    </span>
                   </div>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="bi bi-file-lock"></i>
-                      </span>
-                    </div>
-                    <input type="password" class="form-control" name="password">
+                  <input type="text" placeholder="Username..." class="form-control" name="username">
+                </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="bi bi-file-lock"></i>
+                    </span>
                   </div>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="nc-icon nc-single-02"></i>
-                      </span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="First Name..." name="first_name">
+                  <input type="password" class="form-control" name="password">
+                </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="nc-icon nc-single-02"></i>
+                    </span>
                   </div>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="nc-icon nc-circle-10"></i>
-                      </span>
-                    </div>
-                    <input type="text" placeholder="Last Name..." class="form-control" name="last_name">
+                  <input type="text" class="form-control" placeholder="First Name..." name="first_name">
+                </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="nc-icon nc-circle-10"></i>
+                    </span>
                   </div>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="nc-icon nc-email-85"></i>
-                      </span>
-                    </div>
-                    <input type="email" class="form-control" placeholder="Email..." name="in_email">
+                  <input type="text" placeholder="Last Name..." class="form-control" name="last_name">
+                </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="nc-icon nc-email-85"></i>
+                    </span>
                   </div>
-                  <div class="card-footer ">
-                    <button class="btn btn-info btn-round btn-block mb-3">Get Started</button>
-                  </div>
-                </form>
+                  <input type="email" class="form-control" placeholder="Email..." name="in_email">
+                </div>
+                <div class="card-footer ">
+                  <button class="btn btn-info btn-round btn-block mb-3">Get Started</button>
+                </div>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
-    {% endblock content %}
+  </div>
+</div>
+{% endblock content %}

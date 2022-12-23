@@ -5,7 +5,7 @@
 <div class="wrapper">
   <div class="page-header page-header-small header-filter">
     <div class="page-header-image" data-parallax="true"
-      style="background-image: url('../static/front/img/ruvim-noga.jpg');">
+      style="background-image: url('../static/front/img/marc-olivier-jodoin.jpg');">
     </div>
     <div class="content-center">
       <div class="row">
@@ -15,7 +15,7 @@
           </h1>
           <br />
           {% if request.user.is_anonymous %}
-          <h4 class="description">Lakukan <a href="{% url 'login' %}">Login</a></h4>
+          <h4 class="description">Lakukan <a href="{% url 'login' %}">Login</a> Terlebih Dahulu !!!</h4>
           {% elif request.user %}
           <a><i class="fa fa-user-circle"></i></a>
           <h4 class="description">{{request.user}}</h4>
@@ -92,9 +92,7 @@
                           </thead>
                           <tbody>
                             {% if request.user.is_anonymous %}
-                            <tr>
-                              <th><a href="{% url 'login' %}">Lakukan Login Terlebih Dahulu !!!</a></th>
-                            </tr>
+
                             {% elif request.user %}
                             {% for index in watchlist %}
                             <tr>

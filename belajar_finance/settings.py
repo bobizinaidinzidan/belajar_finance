@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     # penggunaan apps
-    'buku',
     'pengguna',
     'reksadana',
     'berita',

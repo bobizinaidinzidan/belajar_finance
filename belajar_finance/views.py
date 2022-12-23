@@ -115,7 +115,6 @@ def TambahWatchlist(request, id):
     find_reksadana = TWatchlist.objects.filter(id_reksadana=id)
     if find_user.exists():    
         for index in find_user:
-            print(index.id_reksadana)
             if str(index.id_reksadana) == id:
                 update_watchlist = find_user.first()
                 update_watchlist.id_user = get_user
@@ -138,7 +137,7 @@ def addWatchlist(data_user, data_id_reksa):
             id_user=data_user,
             id_reksadana=data_id_reksa,
         )  
-    return redirect('reksadana')
+    return redirect('watchlist')
 
 # Bagian Login & Registrasi
 def Login(request):
@@ -148,7 +147,6 @@ def Login(request):
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
-        print('Username: ', username, 'Password: ',password)
         user = authenticate(request, username=username, password=password)
         if user is not None:
             # Data ada
@@ -175,7 +173,6 @@ def Register(request):
         input_firstname = request.POST.get('first_name')
         input_lastname = request.POST.get('last_name')
         input_email = request.POST.get('in_email')
-        print(input_email)
         #try:
         User.objects.create(
             username = input_username,

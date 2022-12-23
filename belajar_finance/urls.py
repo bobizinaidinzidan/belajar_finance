@@ -32,7 +32,7 @@ urlpatterns = [
     path('watchlist_delete-<str:id>', DeleteWatchlist, name='delete_watchlist'),
 
     # halaman Tabel buku
-    path('dashboard/', include('buku.urls')),
+    path('dashboard/', include('pengguna.urls')),
 
     # halaman Tabel berita
     path('dashboard/', include('berita.urls')),

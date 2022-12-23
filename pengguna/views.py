@@ -10,6 +10,27 @@ def is_operator(user):
     else:
         return False
 
+@user_passes_test(is_operator)
+@login_required
+def Dashboard(request):
+    if request.user.groups.filter(name='Operator').exists():
+        request.session['is_operator'] = 'operator'
+
+    template_name= 'back/dashboard.html'
+    context = {
+        'title': 'ini halaman dashboard'
+    }
+    return render(request, template_name, context)
+    
+@user_passes_test(is_operator)
+@login_required
+def Calendar(request):
+    template_name= 'back/calendar.html'
+    context = {
+        'title': 'ini halaman Kalender'
+    }
+    return render(request, template_name, context)
+
 # Bagian Tabel User
 @user_passes_test(is_operator)
 @login_required
